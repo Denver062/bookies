@@ -27,8 +27,7 @@ export async function searchGoogleBooks(
   query: string,
   maxResults = 10,
   langRestrict?: string,
-  startIndex = 0,
-  publishedAfter?: string
+  startIndex = 0
 ): Promise<{ books: BookInfo[]; total: number }> {
   const params = new URLSearchParams({
     q: query,
@@ -38,7 +37,6 @@ export async function searchGoogleBooks(
     projection: "full",
   });
   if (langRestrict) params.set("langRestrict", langRestrict);
-  if (publishedAfter) params.set("date", `d${publishedAfter}`);
 
   if (API_KEY) params.set("key", API_KEY);
   const res = await fetch(`${API}?${params.toString()}`, {
@@ -112,21 +110,23 @@ export async function fetchBookById(googleId: string): Promise<BookInfo | null> 
   };
 }
 
+function isRecent(pubDate: string | undefined, years = 2): boolean {
+  if (!pubDate) return false;
+  const year = parseInt(pubDate.slice(0, 4), 10);
+  if (isNaN(year)) return false;
+  const cutoff = new Date().getFullYear() - years;
+  return year >= cutoff;
+}
+
 export async function fetchCuratedBooks(
   query: string,
   maxResults = 6
 ): Promise<BookInfo[]> {
-  const twoYearsAgo = new Date();
-  twoYearsAgo.setFullYear(twoYearsAgo.getFullYear() - 2);
-  const dateStr = twoYearsAgo.toISOString().slice(0, 4);
-  const { books } = await searchGoogleBooks(query, maxResults, "ko", 0, dateStr);
-  return books;
+  const { books } = await searchGoogleBooks(query, 30, "ko");
+  return books.filter((b) => isRecent(b.publishedAt)).slice(0, maxResults);
 }
 
 export async function fetchRandomFeaturedBook(): Promise<BookInfo | null> {
-  const twoYearsAgo = new Date();
-  twoYearsAgo.setFullYear(twoYearsAgo.getFullYear() - 2);
-  const dateStr = twoYearsAgo.toISOString().slice(0, 4);
   const queries = [
     "subject:fiction korean",
     "subject:self-help korean",
@@ -137,9 +137,10 @@ export async function fetchRandomFeaturedBook(): Promise<BookInfo | null> {
     "subject:philosophy",
   ];
   const q = queries[Math.floor(Math.random() * queries.length)];
-  const { books } = await searchGoogleBooks(q, 10, "ko", 0, dateStr);
-  if (!books.length) return null;
-  return books[Math.floor(Math.random() * books.length)];
+  const { books } = await searchGoogleBooks(q, 30, "ko");
+  const recent = books.filter((b) => isRecent(b.publishedAt));
+  if (!recent.length) return null;
+  return recent[Math.floor(Math.random() * recent.length)];
 }
 
 function normalizeImage(url?: string): string | undefined {
