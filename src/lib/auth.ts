@@ -8,11 +8,12 @@ export type SessionUser = {
 };
 
 async function getProfile(supabase: Awaited<ReturnType<typeof createClient>>, userId: string) {
-  const { data } = await supabase
+  const { data, error } = await supabase
     .from("profiles")
     .select("name, avatar_color")
     .eq("id", userId)
-    .single();
+    .maybeSingle();
+  if (error) return null;
   return data;
 }
 
@@ -129,7 +130,7 @@ export async function getUserStats() {
   const [booksCount, notesCount, clipsCount, favsCount, pagesSum, avgResult] = await Promise.all([
     supabase.from("books").select("id", { count: "exact", head: true }).eq("user_id", user.id),
     supabase.from("notes").select("id", { count: "exact", head: true }).eq("user_id", user.id),
-    supabase.rpc("count_user_clips", { uid: user.id }).maybeSingle(),
+    supabase.from("clips").select("id, notes!inner(user_id)", { count: "exact", head: true }).eq("notes.user_id", user.id),
     supabase.from("books").select("id", { count: "exact", head: true }).eq("user_id", user.id).eq("is_favorite", true),
     supabase.from("books").select("page_count").eq("user_id", user.id),
     supabase.from("notes").select("rating").eq("user_id", user.id).not("rating", "is", null),
@@ -143,7 +144,7 @@ export async function getUserStats() {
   return {
     books: booksCount.count ?? 0,
     notes: notesCount.count ?? 0,
-    clips: clipsCount.data ?? 0,
+    clips: clipsCount.count ?? 0,
     favorites: favsCount.count ?? 0,
     totalPages,
     ratingAvg,
