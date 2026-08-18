@@ -73,17 +73,7 @@ export function BookCard({
       return;
     }
     if (!info) return;
-    if (!isLoggedIn) {
-      router.push("/auth/login");
-      return;
-    }
-    setBusy("record");
-    try {
-      const { id } = await saveBookFromSearchAction(info);
-      router.push(`/books/${id}`);
-    } finally {
-      setBusy(null);
-    }
+    router.push(`/books/${info.googleId}`);
   }
 
   const inner = (

@@ -109,3 +109,25 @@ export async function searchBooks(
   const items = await aladinSearch(query, maxResults, "Accuracy");
   return { books: items.map(mapToBookInfo), total: items.length };
 }
+
+export async function fetchAladinBook(itemId: string): Promise<BookInfo | null> {
+  if (!TTB_KEY) throw new Error("ALADIN_API_KEY is not set");
+
+  const params = new URLSearchParams({
+    ttbkey: TTB_KEY,
+    ItemId: itemId.replace("aladin-", ""),
+    ItemIdType: "ItemId",
+    Output: "js",
+    Version: VERSION,
+  });
+
+  const res = await fetch(`${BASE}/ItemLookUp.aspx?${params.toString()}`, {
+    headers: { Accept: "application/json" },
+    next: { revalidate: 3600 },
+  });
+
+  if (!res.ok) return null;
+  const data = (await res.json()) as AladinResponse;
+  const item = data.item?.[0];
+  return item ? mapToBookInfo(item) : null;
+}

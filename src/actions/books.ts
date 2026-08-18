@@ -1,7 +1,14 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
-import { saveBookFromGoogle, setFavorite, deleteBook, updateBookMeta, getBookById } from "@/lib/books";
+import {
+  saveBookFromGoogle,
+  setFavorite,
+  deleteBook,
+  updateBookMeta,
+  getBookById,
+  getBookByGoogleId,
+} from "@/lib/books";
 import { requireAuth } from "@/lib/auth";
 import type { BookInfo } from "@/lib/types";
 
@@ -14,6 +21,24 @@ export async function saveBookFromSearchAction(info: BookInfo): Promise<{ id: st
   revalidatePath("/");
   revalidatePath("/books");
   return { id: book.id };
+}
+
+export async function toggleLibraryAction(info: BookInfo): Promise<{ added: boolean }> {
+  if (!info?.googleId || !info?.title) {
+    throw new Error("책 정보가 올바르지 않습니다.");
+  }
+  const user = await requireAuth();
+  const existing = await getBookByGoogleId(info.googleId);
+  if (existing && existing.userId === user.id) {
+    await deleteBook(existing.id);
+    revalidatePath("/");
+    revalidatePath("/books");
+    return { added: false };
+  }
+  await saveBookFromGoogle(user.id, info);
+  revalidatePath("/");
+  revalidatePath("/books");
+  return { added: true };
 }
 
 export async function toggleFavoriteAction(bookId: string): Promise<{ favorite: boolean }> {

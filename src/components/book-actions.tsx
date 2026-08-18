@@ -15,12 +15,10 @@ export function BookActions({
   book,
   folders,
   selectedFolderIds,
-  isLoggedIn,
 }: {
   book: Book;
   folders: Folder[];
   selectedFolderIds: string[];
-  isLoggedIn: boolean;
 }) {
   const router = useRouter();
   const [favorite, setFavorite] = useState(book.isFavorite);
@@ -28,7 +26,6 @@ export function BookActions({
   const [confirmDel, setConfirmDel] = useState(false);
 
   async function toggleFav() {
-    if (!isLoggedIn) { router.push("/auth/login"); return; }
     setBusy("fav");
     setFavorite(!favorite);
     try {
@@ -47,31 +44,6 @@ export function BookActions({
     } finally {
       setBusy(null);
     }
-  }
-
-  if (!isLoggedIn) {
-    return (
-      <div className="flex flex-wrap items-center gap-2">
-        <Link
-          href="/auth/login"
-          className="inline-flex h-10 items-center gap-2 rounded-lg bg-ink px-4 text-sm font-semibold text-paper transition-colors hover:bg-ink/90"
-        >
-          <PenLine className="h-4 w-4" />
-          로그인하고 기록하기
-        </Link>
-        {book.infoLink ? (
-          <a
-            href={book.infoLink}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex h-10 items-center gap-1.5 rounded-xl border border-line bg-white px-4 text-sm font-medium text-ink-soft transition-colors hover:text-ink"
-          >
-            <ExternalLink className="h-4 w-4" />
-            원문 보기
-          </a>
-        ) : null}
-      </div>
-    );
   }
 
   return (

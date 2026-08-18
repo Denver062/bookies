@@ -534,3 +534,109 @@ Error: Unterminated string constant
 Parsing ecmascript source code failed 
  GET /search?q=%EC%8B%AC%EB%A6%AC 200 in 35ms (next.js: 4ms, application-code: 31ms)
  GET /api/search?q=%EC%8B%AC%EB%A6%AC&start=0&max=10 200 in 695ms (next.js: 3ms, application-code: 692ms)
+ GET /search?q=%EC%8B%AC%EB%A6%AC 200 in 31ms (next.js: 3ms, application-code: 28ms)
+ GET /api/search?q=%EC%8B%AC%EB%A6%AC&start=0&max=10 200 in 1696ms (next.js: 2ms, application-code: 1694ms)
+ GET /auth/login 200 in 14ms (next.js: 4ms, application-code: 10ms)
+ GET /api/search?q=%EC%8B%AC%EB%A6%AC&start=0&max=10 200 in 1378ms (next.js: 2ms, application-code: 1376ms)
+ GET /auth/login 200 in 16ms (next.js: 5ms, application-code: 11ms)
+ GET /auth/login 200 in 31ms (next.js: 3ms, application-code: 28ms)
+ GET /books 200 in 60ms (next.js: 8ms, proxy.ts: 29ms, application-code: 23ms)
+ GET /auth/login 200 in 13ms (next.js: 3ms, application-code: 10ms)
+ GET /auth/login 200 in 12ms (next.js: 3ms, application-code: 9ms)
+ GET /search 200 in 14ms (next.js: 3ms, application-code: 11ms)
+ GET /api/search?q=%EC%86%8C%EC%84%A4&start=0&max=10 200 in 835ms (next.js: 3ms, application-code: 832ms)
+ GET /auth/login 200 in 12ms (next.js: 3ms, application-code: 10ms)
+✓ Compiled in 26ms
+ GET /auth/login 200 in 22ms (next.js: 3ms, application-code: 18ms)
+ GET /auth/login 200 in 21ms (next.js: 4ms, application-code: 18ms)
+ POST /auth/login 200 in 1336ms (next.js: 4ms, application-code: 1333ms)
+  └─ ƒ loginAction(null, {}) in 943ms src/actions/auth.ts
+ GET / 200 in 263ms (next.js: 3ms, application-code: 260ms)
+ GET / 200 in 506ms (next.js: 5ms, application-code: 501ms)
+ GET /books 200 in 522ms (next.js: 4ms, proxy.ts: 113ms, application-code: 405ms)
+ GET /search 200 in 395ms (next.js: 3ms, application-code: 392ms)
+ GET /api/search?q=%EC%9E%90%EA%B8%B0%EA%B3%84%EB%B0%9C&start=0&max=10 200 in 1689ms (next.js: 2ms, application-code: 1686ms)
+✓ Compiled in 29ms
+ POST /search 200 in 809ms (next.js: 3ms, application-code: 806ms)
+  └─ ƒ saveBookFromSearchAction({"authors":["브랜딩피디"],"description":"이 책의 목적은 '퍼스널브랜딩을 하라'가 아니다. 초고령화 시대에 접어들었다. 자기 고용의 시대라고 한다. 퍼스널 브랜딩의 시대 속에 살고 있다고 한다. 모두가 더 나은 삶을 살기 위함 이라며 자기 계발에 힘을 쏟는다. 무엇으로 어떻게 먹고살아야 하냐는 나이불문 경력불문 스펙불문이다. 능력 여부와 상관없이 다양한 파이프라인을 갖춰야 하는 시대를 반증한다. 자기 고용을 통해 스스로 생산자와 고용자가 되는 시대 속에서 나로 살기로 마음먹었다면 그 시작점기도 한 퍼스널브랜딩을 이야기해 본다.","googleId":"yzRmEQAAQBAJ","...":"8 items not stringified"}) in 412ms src/actions/books.ts
+ GET /books/bk_msyypmch_4f6p48zc 200 in 585ms (next.js: 11ms, proxy.ts: 116ms, application-code: 459ms)
+ GET /books/bk_msyypmch_4f6p48zc 200 in 781ms (next.js: 6ms, proxy.ts: 98ms, application-code: 677ms)
+✓ Compiled in 22ms
+ GET /books 200 in 554ms (next.js: 5ms, proxy.ts: 119ms, application-code: 431ms)
+ GET /books 200 in 457ms (next.js: 3ms, proxy.ts: 93ms, application-code: 361ms)
+✓ Compiled in 23ms
+ GET / 200 in 1847ms (next.js: 3ms, application-code: 1844ms)
+ GET /books/bk_msyypmch_4f6p48zc 200 in 445ms (next.js: 7ms, application-code: 438ms)
+ GET /books 200 in 545ms (next.js: 4ms, proxy.ts: 127ms, application-code: 414ms)
+ GET / 200 in 745ms (next.js: 5ms, application-code: 740ms)
+ GET /search 200 in 417ms (next.js: 3ms, application-code: 414ms)
+ GET / 200 in 742ms (next.js: 3ms, application-code: 739ms)
+ GET / 200 in 40ms (next.js: 6ms, application-code: 34ms)
+ GET / 200 in 39ms (next.js: 6ms, application-code: 33ms)
+ GET / 200 in 35ms (next.js: 5ms, application-code: 30ms)
+ GET / 200 in 44ms (next.js: 8ms, application-code: 36ms)
+ GET / 200 in 44ms (next.js: 7ms, application-code: 37ms)
+ GET / 200 in 46ms (next.js: 6ms, application-code: 40ms)
+ GET / 200 in 42ms (next.js: 6ms, application-code: 37ms)
+ GET / 200 in 40ms (next.js: 6ms, application-code: 34ms)
+ GET / 200 in 39ms (next.js: 6ms, application-code: 33ms)
+ GET / 200 in 40ms (next.js: 6ms, application-code: 34ms)
+⨯ ./src/app/books/[id]/page.tsx:13:1
+Error: Module not found: Can't resolve '@/components/book-library-toggle'
+  [90m11 |[0m [36mimport[0m { [33mBookActions[0m } [36mfrom[0m [32m"@/components/book-actions"[0m;
+  [90m12 |[0m [36mimport[0m { [33mBookDescription[0m } [36mfrom[0m [32m"@/components/book-description"[0m;
+[31m[1m>[0m [90m13 |[0m [36mimport[0m { [33mBookLibraryToggle[0m } [36mfrom[0m [32m"@/components/book-library-toggle"[0m;
+  [90m   |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m14 |[0m [36mimport[0m { [33mNoteCard[0m } [36mfrom[0m [32m"@/components/note-card"[0m;
+  [90m15 |[0m [36mimport[0m { [33mBadge[0m } [36mfrom[0m [32m"@/components/ui"[0m;
+  [90m16 |[0m [36mimport[0m { formatDateShort } [36mfrom[0m [32m"@/lib/utils"[0m;
+
+Import map: aliased to relative './src/components/book-library-toggle' inside of [project]/
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+⨯ ./src/app/books/[id]/page.tsx:13:1
+Error: Module not found: Can't resolve '@/components/book-library-toggle'
+  [90m11 |[0m [36mimport[0m { [33mBookActions[0m } [36mfrom[0m [32m"@/components/book-actions"[0m;
+  [90m12 |[0m [36mimport[0m { [33mBookDescription[0m } [36mfrom[0m [32m"@/components/book-description"[0m;
+[31m[1m>[0m [90m13 |[0m [36mimport[0m { [33mBookLibraryToggle[0m } [36mfrom[0m [32m"@/components/book-library-toggle"[0m;
+  [90m   |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  [90m14 |[0m [36mimport[0m { [33mNoteCard[0m } [36mfrom[0m [32m"@/components/note-card"[0m;
+  [90m15 |[0m [36mimport[0m { [33mBadge[0m } [36mfrom[0m [32m"@/components/ui"[0m;
+  [90m16 |[0m [36mimport[0m { formatDateShort } [36mfrom[0m [32m"@/lib/utils"[0m;
+
+Import map: aliased to relative './src/components/book-library-toggle' inside of [project]/
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[browser] ./src/app/books/[id]/page.tsx:13:1
+Error: Module not found: Can't resolve '@/components/book-library-toggle'
+  11 | import { BookActions } from "@/components/book-actions";
+  12 | import { BookDescription } from "@/components/book-description";
+> 13 | import { BookLibraryToggle } from "@/components/book-library-toggle";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  14 | import { NoteCard } from "@/components/note-card";
+  15 | import { Badge } from "@/components/ui";
+  16 | import { formatDateShort } from "@/lib/utils";
+
+Import map: aliased to relative './src/components/book-library-toggle' inside of [project]/
+
+https://nextjs.org/docs/messages/module-not-found 
+[browser] ./src/app/books/[id]/page.tsx:13:1
+Error: Module not found: Can't resolve '@/components/book-library-toggle'
+  11 | import { BookActions } from "@/components/book-actions";
+  12 | import { BookDescription } from "@/components/book-description";
+> 13 | import { BookLibraryToggle } from "@/components/book-library-toggle";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  14 | import { NoteCard } from "@/components/note-card";
+  15 | import { Badge } from "@/components/ui";
+  16 | import { formatDateShort } from "@/lib/utils";
+
+Import map: aliased to relative './src/components/book-library-toggle' inside of [project]/
+
+https://nextjs.org/docs/messages/module-not-found 
+ GET / 200 in 37ms (next.js: 3ms, application-code: 34ms)
