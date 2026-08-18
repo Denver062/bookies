@@ -120,7 +120,7 @@ export default async function HomePage() {
         <CuratedSection
           title="오늘 밤 읽기 좋은 소설"
           icon={BookOpen}
-          query="subject:fiction"
+          query="소설"
         />
       </Suspense>
 
@@ -128,7 +128,7 @@ export default async function HomePage() {
         <CuratedSection
           title="마음을 다잡아주는 심리학 책"
           icon={Sparkles}
-          query="subject:psychology"
+          query="심리학"
         />
       </Suspense>
 
@@ -136,7 +136,15 @@ export default async function HomePage() {
         <CuratedSection
           title="자기계발과 습관"
           icon={ClipboardList}
-          query="subject:self-help"
+          query="자기계발 습관"
+        />
+      </Suspense>
+
+      <Suspense fallback={null}>
+        <CuratedSection
+          title="에세이와 인문학"
+          icon={BookOpen}
+          query="에세이 인문학"
         />
       </Suspense>
 
