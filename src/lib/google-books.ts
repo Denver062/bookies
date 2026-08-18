@@ -27,7 +27,8 @@ export async function searchGoogleBooks(
   query: string,
   maxResults = 10,
   langRestrict?: string,
-  startIndex = 0
+  startIndex = 0,
+  publishedAfter?: string
 ): Promise<{ books: BookInfo[]; total: number }> {
   const params = new URLSearchParams({
     q: query,
@@ -37,6 +38,7 @@ export async function searchGoogleBooks(
     projection: "full",
   });
   if (langRestrict) params.set("langRestrict", langRestrict);
+  if (publishedAfter) params.set("date", `d${publishedAfter}`);
 
   if (API_KEY) params.set("key", API_KEY);
   const res = await fetch(`${API}?${params.toString()}`, {
@@ -114,23 +116,28 @@ export async function fetchCuratedBooks(
   query: string,
   maxResults = 6
 ): Promise<BookInfo[]> {
-  const { books } = await searchGoogleBooks(query, maxResults, "ko");
+  const twoYearsAgo = new Date();
+  twoYearsAgo.setFullYear(twoYearsAgo.getFullYear() - 2);
+  const dateStr = twoYearsAgo.toISOString().slice(0, 4);
+  const { books } = await searchGoogleBooks(query, maxResults, "ko", 0, dateStr);
   return books;
 }
 
 export async function fetchRandomFeaturedBook(): Promise<BookInfo | null> {
+  const twoYearsAgo = new Date();
+  twoYearsAgo.setFullYear(twoYearsAgo.getFullYear() - 2);
+  const dateStr = twoYearsAgo.toISOString().slice(0, 4);
   const queries = [
-    "불편한 편의점",
-    "아몬드 손원평",
-    "돈의 속성",
-    "지구 끝의 온실",
-    "나의 하루는 4시 30분에 시작된다",
-    "부의 추월 차선",
-    "역행자",
-    "코스모스 칼 세이건",
+    "subject:fiction korean",
+    "subject:self-help korean",
+    "subject:psychology korean",
+    "subject:essay korean",
+    "intitle:기록",
+    "subject:literary fiction",
+    "subject:philosophy",
   ];
   const q = queries[Math.floor(Math.random() * queries.length)];
-  const { books } = await searchGoogleBooks(q, 10, "ko");
+  const { books } = await searchGoogleBooks(q, 10, "ko", 0, dateStr);
   if (!books.length) return null;
   return books[Math.floor(Math.random() * books.length)];
 }
