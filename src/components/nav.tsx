@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import { motion } from "framer-motion";
 import { BookMarked, Search, Library, NotebookPen, Heart, FolderOpen, LogIn } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { ThemeToggle } from "@/components/theme-toggle";
 import type { SessionUser } from "@/lib/auth";
 
 const links = [
@@ -20,7 +21,7 @@ export function Nav({ user }: { user: SessionUser | null }) {
   const pathname = usePathname();
 
   return (
-    <header className="sticky top-0 z-40 border-b border-line/70 bg-paper/80 backdrop-blur-xl">
+    <header className="sticky top-0 z-40 border-b border-line/70 bg-paper/80 backdrop-blur-xl dark:bg-paper/90">
       <div className="flex h-14 items-center justify-between px-2 sm:px-4 lg:px-6">
         <Link href="/" className="font-serif text-lg font-bold tracking-tight text-ink">
           bookies
@@ -56,7 +57,8 @@ export function Nav({ user }: { user: SessionUser | null }) {
           })}
         </nav>
 
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-1">
+          <ThemeToggle />
           {user ? (
             <Link
               href="/profile"

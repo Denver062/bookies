@@ -17,7 +17,6 @@
   --font-sans: var(--font-pretendard), "Pretendard", sans-serif;
 
   --shadow-book: none;
-
   --shadow-sm: none;
   --shadow: none;
   --shadow-md: none;
@@ -29,27 +28,34 @@
   --animate-rise: rise 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
 
   @keyframes fade-in {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
+    from { opacity: 0; }
+    to { opacity: 1; }
   }
 
   @keyframes rise {
-    from {
-      opacity: 0;
-      transform: translateY(14px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    from { opacity: 0; transform: translateY(14px); }
+    to { opacity: 1; transform: translateY(0); }
   }
 }
 
 :root {
+  --background: var(--color-paper);
+  --foreground: var(--color-ink);
+}
+
+.dark {
+  --color-paper: #1a1e24;
+  --color-cream: #22262e;
+  --color-ink: #e0e4e8;
+  --color-ink-soft: #a0a8b0;
+  --color-ink-faint: #6b7280;
+  --color-line: #333a44;
+  --color-accent: #6b9fc0;
+  --color-accent-deep: #8fc0e0;
+  --color-accent-soft: #1e2a34;
+  --color-leaf: #6baa82;
+  --color-sand: #d4b87a;
+
   --background: var(--color-paper);
   --foreground: var(--color-ink);
 }
@@ -63,6 +69,9 @@ body {
 ::selection {
   background: rgba(84, 122, 149, 0.25);
 }
+.dark ::selection {
+  background: rgba(107, 159, 192, 0.3);
+}
 
 .scrollbar-thin::-webkit-scrollbar {
   width: 6px;
@@ -72,8 +81,19 @@ body {
   background: rgba(90, 110, 130, 0.35);
   border-radius: 999px;
 }
+.dark .scrollbar-thin::-webkit-scrollbar-thumb {
+  background: rgba(160, 168, 176, 0.3);
+}
 .scrollbar-thin::-webkit-scrollbar-track {
   background: transparent;
+}
+
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-none {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
 .markdown-body {
@@ -90,32 +110,18 @@ body {
   line-height: 1.4;
   margin: 1.6em 0 0.6em;
 }
-.markdown-body h1 {
-  font-size: 1.6em;
-}
-.markdown-body h2 {
-  font-size: 1.35em;
-}
-.markdown-body h3 {
-  font-size: 1.15em;
-}
-.markdown-body p {
-  margin: 0.7em 0;
-}
+.markdown-body h1 { font-size: 1.6em; }
+.markdown-body h2 { font-size: 1.35em; }
+.markdown-body h3 { font-size: 1.15em; }
+.markdown-body p { margin: 0.7em 0; }
 .markdown-body ul,
 .markdown-body ol {
   margin: 0.7em 0;
   padding-left: 1.4em;
 }
-.markdown-body ul {
-  list-style: disc;
-}
-.markdown-body ol {
-  list-style: decimal;
-}
-.markdown-body li {
-  margin: 0.25em 0;
-}
+.markdown-body ul { list-style: disc; }
+.markdown-body ol { list-style: decimal; }
+.markdown-body li { margin: 0.25em 0; }
 .markdown-body blockquote {
   border-left: 3px solid rgba(84, 122, 149, 0.55);
   padding-left: 1em;
@@ -129,6 +135,9 @@ body {
   background: rgba(44, 57, 71, 0.08);
   padding: 0.15em 0.4em;
   border-radius: 0.35em;
+}
+.dark .markdown-body code {
+  background: rgba(224, 228, 232, 0.1);
 }
 .markdown-body pre {
   background: rgba(44, 57, 71, 0.92);
@@ -153,9 +162,7 @@ body {
   border-top: 1px solid rgba(90, 110, 130, 0.25);
   margin: 1.6em 0;
 }
-.markdown-body strong {
-  font-weight: 700;
-}
+.markdown-body strong { font-weight: 700; }
 .markdown-body img {
   max-width: 100%;
   border-radius: 0.6em;

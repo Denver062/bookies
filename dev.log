@@ -640,3 +640,31 @@ Import map: aliased to relative './src/components/book-library-toggle' inside of
 
 https://nextjs.org/docs/messages/module-not-found 
  GET / 200 in 37ms (next.js: 3ms, application-code: 34ms)
+✓ Compiled in 114ms
+✓ Compiled in 31ms
+ GET / 200 in 54ms (next.js: 10ms, application-code: 43ms)
+✓ Compiled in 46ms
+ GET / 200 in 41ms (next.js: 6ms, application-code: 35ms)
+✓ Compiled in 148ms
+ GET / 200 in 58ms (next.js: 7ms, application-code: 52ms)
+✓ Compiled in 49ms
+ GET / 200 in 52ms (next.js: 9ms, application-code: 43ms)
+ GET / 200 in 1434ms (next.js: 4ms, application-code: 1430ms)
+ GET / 200 in 32ms (next.js: 3ms, application-code: 29ms)
+✓ Compiled in 32ms
+ GET / 200 in 745ms (next.js: 3ms, application-code: 743ms)
+ GET /sitemap.xml 404 in 34ms (next.js: 8ms, application-code: 26ms)
+ GET / 200 in 32ms (next.js: 3ms, application-code: 29ms)
+✓ Compiled in 27ms
+ GET / 200 in 40ms (next.js: 4ms, application-code: 36ms)
+ GET / 200 in 33ms (next.js: 4ms, application-code: 29ms)
+✓ Compiled in 51ms
+ GET / 200 in 48ms (next.js: 5ms, application-code: 42ms)
+✓ Compiled in 43ms
+ GET / 200 in 49ms (next.js: 4ms, application-code: 44ms)
+ GET / 200 in 43ms (next.js: 4ms, application-code: 39ms)
+✓ Compiled in 40ms
+ GET / 200 in 49ms (next.js: 9ms, application-code: 40ms)
+ GET / 200 in 48ms (next.js: 8ms, application-code: 40ms)
+ GET / 200 in 53ms (next.js: 9ms, application-code: 44ms)
+ GET / 200 in 44ms (next.js: 8ms, application-code: 36ms)

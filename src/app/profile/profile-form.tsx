@@ -9,32 +9,30 @@ export function ProfileForm({ name, email }: { name: string; email: string }) {
   const [state, formAction, pending] = useActionState(updateProfileAction, null);
 
   return (
-    <form action={formAction} className="space-y-4">
+    <form action={formAction} className="space-y-3">
       {state?.error ? (
-        <div className="rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm font-medium text-red-700">
+        <div className="rounded-lg border border-red-200 bg-red-50 px-3 py-2 text-xs font-medium text-red-700 dark:border-red-500/30 dark:bg-red-500/10 dark:text-red-400">
           {state.error}
         </div>
       ) : null}
       {state?.success ? (
-        <div className="rounded-xl border border-green-200 bg-green-50 px-4 py-3 text-sm font-medium text-green-700">
+        <div className="rounded-lg border border-green-200 bg-green-50 px-3 py-2 text-xs font-medium text-green-700 dark:border-green-500/30 dark:bg-green-500/10 dark:text-green-400">
           {state.success}
         </div>
       ) : null}
 
-      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-        <div>
-          <Label>이름</Label>
-          <Input name="name" defaultValue={name} required minLength={2} />
-        </div>
-        <div>
-          <Label>이메일</Label>
-          <Input name="email" type="email" defaultValue={email} required />
-        </div>
+      <div>
+        <Label>이름</Label>
+        <Input name="name" defaultValue={name} required minLength={2} />
+      </div>
+      <div>
+        <Label>이메일</Label>
+        <Input name="email" type="email" defaultValue={email} required />
       </div>
 
-      <div className="border-t border-line pt-4">
-        <h3 className="mb-3 text-sm font-semibold text-ink">비밀번호 변경 (선택)</h3>
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+      <div className="border-t border-line pt-3">
+        <h3 className="mb-2 text-xs font-semibold text-ink-soft">비밀번호 변경 (선택)</h3>
+        <div className="space-y-3">
           <div>
             <Label>현재 비밀번호</Label>
             <Input name="currentPassword" type="password" placeholder="변경 시 필수" />
@@ -46,12 +44,10 @@ export function ProfileForm({ name, email }: { name: string; email: string }) {
         </div>
       </div>
 
-      <div className="flex justify-end">
-        <Button type="submit" disabled={pending}>
-          {pending ? <Spinner /> : <Save className="h-4 w-4" />}
-          {pending ? "저장 중…" : "저장하기"}
-        </Button>
-      </div>
+      <Button type="submit" size="sm" disabled={pending} className="w-full">
+        {pending ? <Spinner className="h-3.5 w-3.5" /> : <Save className="h-3.5 w-3.5" />}
+        {pending ? "저장 중…" : "저장하기"}
+      </Button>
     </form>
   );
 }

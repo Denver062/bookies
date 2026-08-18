@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import { Nav } from "@/components/nav";
+import { ThemeProvider } from "@/components/theme-provider";
 import { getSession } from "@/lib/auth";
 import "./globals.css";
 
@@ -29,15 +30,17 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
   const session = await getSession();
 
   return (
-    <html lang="ko" className={pretendard.variable}>
+    <html lang="ko" className={pretendard.variable} suppressHydrationWarning>
       <body className="min-h-screen">
-        <Nav user={session} />
-        <div className="px-2 pb-24 pt-4 sm:px-4 lg:px-6">
-          {children}
-        </div>
-        <footer className="border-t border-line px-4 py-6 text-center text-[11px] text-ink-faint">
-          도서 DB 제공 : <a href="https://www.aladin.co.kr" target="_blank" rel="noopener noreferrer" className="underline hover:text-ink-soft">알라딘 인터넷서점(www.aladin.co.kr)</a>
-        </footer>
+        <ThemeProvider>
+          <Nav user={session} />
+          <div className="px-2 pb-24 pt-4 sm:px-4 lg:px-6">
+            {children}
+          </div>
+          <footer className="border-t border-line px-4 py-6 text-center text-[11px] text-ink-faint">
+            도서 DB 제공 : <a href="https://www.aladin.co.kr" target="_blank" rel="noopener noreferrer" className="underline hover:text-ink-soft">알라딘 인터넷서점(www.aladin.co.kr)</a>
+          </footer>
+        </ThemeProvider>
       </body>
     </html>
   );

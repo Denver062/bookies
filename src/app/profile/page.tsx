@@ -1,4 +1,5 @@
 import { redirect } from "next/navigation";
+import Link from "next/link";
 import { getSession, getUserStats } from "@/lib/auth";
 import { recentNotes } from "@/lib/notes";
 import { listFavoriteBooks } from "@/lib/books";
@@ -21,86 +22,104 @@ export default async function ProfilePage() {
   ]);
 
   return (
-    <div className="space-y-8">
-      <section className="relative overflow-hidden rounded-xl border border-line bg-ink px-6 py-10 text-paper sm:px-10 animate-rise">
-        <div
-          className="pointer-events-none absolute inset-0 opacity-30"
-          style={{
-            background: `radial-gradient(600px 250px at 90% 0%, ${session.avatarColor}80, transparent 60%), radial-gradient(400px 200px at 10% 100%, rgba(84,122,149,0.4), transparent 55%)`,
-          }}
-        />
-        <div className="relative flex items-center gap-5">
-          <div
-            className="flex h-16 w-16 shrink-0 items-center justify-center rounded-xl text-2xl font-black text-white shadow-lg"
-            style={{ background: session.avatarColor }}
-          >
-            {session.name.slice(0, 1)}
-          </div>
-          <div>
-            <h1 className="font-serif text-2xl font-black">{session.name}</h1>
-            <p className="text-sm text-paper/60">{session.email}</p>
-          </div>
-          <div className="ml-auto">
-            <LogoutButton />
-          </div>
-        </div>
-      </section>
+    <div className="mx-auto max-w-6xl">
+      <div className="flex flex-col gap-8 lg:flex-row">
+        <aside className="w-full shrink-0 lg:w-1/3">
+          <div className="sticky top-20 space-y-6">
+            <div className="rounded-2xl border border-line bg-cream p-6 dark:bg-cream">
+              <div className="flex items-center gap-4">
+                <div
+                  className="flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl text-2xl font-black text-white shadow-lg"
+                  style={{ background: session.avatarColor }}
+                >
+                  {session.name.slice(0, 1)}
+                </div>
+                <div className="min-w-0">
+                  <h1 className="truncate font-serif text-xl font-black text-ink">{session.name}</h1>
+                  <p className="truncate text-sm text-ink-soft">{session.email}</p>
+                </div>
+              </div>
 
-      <section className="grid grid-cols-3 gap-3">
-        {[
-          { label: "기록", value: stats.notes, icon: ClipboardList },
-          { label: "클립", value: stats.clips, icon: Quote },
-          { label: "즐겨찾기", value: stats.favorites, icon: Heart },
-        ].map((s) => (
-          <div
-            key={s.label}
-            className="flex items-center gap-3 rounded-xl border border-line bg-cream px-4 py-4 shadow-book"
-          >
-            <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-accent-soft text-accent-deep">
-              <s.icon className="h-5 w-5" />
-            </span>
-            <span>
-              <span className="block font-serif text-2xl font-bold leading-none text-ink">
-                {String(s.value)}
-              </span>
-              <span className="mt-1 block text-xs text-ink-soft">{s.label}</span>
-            </span>
-          </div>
-        ))}
-      </section>
+              <div className="mt-6 grid grid-cols-3 gap-3">
+                {[
+                  { label: "기록", value: stats.notes, icon: ClipboardList },
+                  { label: "클립", value: stats.clips, icon: Quote },
+                  { label: "즐겨찾기", value: stats.favorites, icon: Heart },
+                ].map((s) => (
+                  <div key={s.label} className="flex flex-col items-center rounded-xl border border-line bg-paper py-3 dark:bg-paper">
+                    <s.icon className="h-4 w-4 text-accent" />
+                    <span className="mt-1 font-serif text-xl font-bold text-ink">{String(s.value)}</span>
+                    <span className="text-[11px] text-ink-faint">{s.label}</span>
+                  </div>
+                ))}
+              </div>
 
-      <section className="rounded-xl border border-line bg-cream p-6 shadow-book">
-        <h2 className="mb-4 font-serif text-lg font-bold text-ink">프로필 수정</h2>
-        <ProfileForm name={session.name} email={session.email} />
-      </section>
+              <div className="mt-5">
+                <LogoutButton />
+              </div>
+            </div>
 
-      {favorites.length > 0 ? (
-        <section>
-          <h2 className="mb-4 font-serif text-lg font-bold text-ink">
-            즐겨찾는 책
-            <span className="ml-2 text-sm font-normal text-ink-faint">{favorites.length}권</span>
-          </h2>
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-            {favorites.slice(0, 4).map((b) => (
-              <BookCard key={b.id} book={b} />
-            ))}
+            <div className="rounded-2xl border border-line bg-cream p-5 dark:bg-cream">
+              <h2 className="mb-3 font-serif text-sm font-bold text-ink">프로필 수정</h2>
+              <ProfileForm name={session.name} email={session.email} />
+            </div>
           </div>
-        </section>
-      ) : null}
+        </aside>
 
-      {notes.length > 0 ? (
-        <section>
-          <h2 className="mb-4 font-serif text-lg font-bold text-ink">
-            최근 기록
-            <span className="ml-2 text-sm font-normal text-ink-faint">{notes.length}개</span>
-          </h2>
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-            {notes.map((n) => (
-              <NoteCard key={n.id} note={n} />
-            ))}
-          </div>
-        </section>
-      ) : null}
+        <main className="min-w-0 flex-1 space-y-8">
+          {favorites.length > 0 ? (
+            <section>
+              <h2 className="mb-4 flex items-center gap-2 font-serif text-lg font-bold text-ink">
+                <Heart className="h-5 w-5 text-accent" />
+                즐겨찾는 책
+                <span className="text-sm font-normal text-ink-faint">{favorites.length}권</span>
+              </h2>
+              <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                {favorites.slice(0, 4).map((b) => (
+                  <BookCard key={b.id} book={b} />
+                ))}
+              </div>
+            </section>
+          ) : (
+            <section className="rounded-2xl border border-dashed border-line bg-cream/60 px-6 py-12 text-center dark:bg-cream/40">
+              <Heart className="mx-auto mb-3 h-8 w-8 text-ink-faint" />
+              <p className="font-serif text-base font-semibold text-ink">아직 즐겨찾는 책이 없어요</p>
+              <p className="mt-1 text-sm text-ink-soft">
+                책 찾기에서 마음에 드는 책을 즐겨찾기 해보세요.
+              </p>
+            </section>
+          )}
+
+          {notes.length > 0 ? (
+            <section>
+              <h2 className="mb-4 flex items-center gap-2 font-serif text-lg font-bold text-ink">
+                <ClipboardList className="h-5 w-5 text-accent" />
+                최근 기록
+                <span className="text-sm font-normal text-ink-faint">{notes.length}개</span>
+              </h2>
+              <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                {notes.map((n) => (
+                  <NoteCard key={n.id} note={n} />
+                ))}
+              </div>
+            </section>
+          ) : (
+            <section className="rounded-2xl border border-dashed border-line bg-cream/60 px-6 py-12 text-center dark:bg-cream/40">
+              <ClipboardList className="mx-auto mb-3 h-8 w-8 text-ink-faint" />
+              <p className="font-serif text-base font-semibold text-ink">아직 기록이 없어요</p>
+              <p className="mt-1 text-sm text-ink-soft">
+                책을 검색하고 첫 기록을 남겨보세요.
+              </p>
+              <Link
+                href="/search"
+                className="mt-4 inline-flex h-9 items-center gap-2 rounded-lg bg-ink px-4 text-sm font-medium text-paper transition-colors hover:bg-ink/90"
+              >
+                책 찾으러 가기
+              </Link>
+            </section>
+          )}
+        </main>
+      </div>
     </div>
   );
 }

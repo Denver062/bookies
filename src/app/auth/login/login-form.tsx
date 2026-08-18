@@ -21,7 +21,7 @@ export function LoginForm() {
   }, [state, router, from]);
 
   return (
-    <form action={formAction} className="space-y-4 rounded-xl border border-line bg-cream p-6 shadow-book">
+    <form action={formAction} className="space-y-4">
       <input type="hidden" name="from" value={from} />
       {state?.error ? (
         <div className="rounded-lg border border-red-200 bg-red-50 px-4 py-3 text-sm font-medium text-red-700">

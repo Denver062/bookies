@@ -18,7 +18,7 @@ export function LogoutButton() {
   }
 
   return (
-    <Button variant="ghost" onClick={handle} disabled={pending} className="text-paper/60 hover:text-paper hover:bg-white/10">
+    <Button variant="ghost" onClick={handle} disabled={pending} className="w-full justify-center text-ink-faint hover:text-red-600 hover:bg-red-50 dark:hover:bg-red-500/10">
       {pending ? <Spinner className="h-4 w-4" /> : <LogOut className="h-4 w-4" />}
       로그아웃
     </Button>

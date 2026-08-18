@@ -8,11 +8,11 @@ const variantClasses: Record<Variant, string> = {
   primary:
     "bg-accent text-white shadow-sm hover:bg-accent-deep",
   secondary:
-    "bg-white text-ink border border-line shadow-sm hover:border-accent/40 hover:text-accent-deep",
+    "bg-white text-ink border border-line shadow-sm hover:border-accent/40 hover:text-accent-deep dark:bg-cream dark:hover:bg-accent-soft",
   ghost:
-    "text-ink-soft hover:text-ink hover:bg-ink/[0.05]",
+    "text-ink-soft hover:text-ink hover:bg-ink/[0.05] dark:hover:bg-white/[0.06]",
   danger:
-    "bg-red-50 text-red-700 border border-red-200 hover:bg-red-100",
+    "bg-red-50 text-red-700 border border-red-200 hover:bg-red-100 dark:bg-red-500/10 dark:border-red-500/20 dark:text-red-400 dark:hover:bg-red-500/20",
   dark: "bg-ink text-paper hover:bg-ink/90",
 };
 
@@ -42,7 +42,7 @@ export function Button({
 }
 
 const inputBase =
-  "w-full rounded-xl border border-line bg-cream px-3.5 text-sm text-ink placeholder:text-ink-faint shadow-sm outline-none transition focus:border-accent/50 focus:ring-4 focus:ring-accent/10";
+  "w-full rounded-xl border border-line bg-cream px-3.5 text-sm text-ink placeholder:text-ink-faint shadow-sm outline-none transition focus:border-accent/50 focus:ring-4 focus:ring-accent/10 dark:bg-cream dark:text-ink dark:placeholder:text-ink-faint";
 
 export function Input({ className, ...props }: InputHTMLAttributes<HTMLInputElement>) {
   return <input className={cn(inputBase, "h-10", className)} {...props} />;
@@ -101,7 +101,7 @@ export function EmptyState({
   action?: ReactNode;
 }) {
   return (
-    <div className="flex flex-col items-center justify-center rounded-xl border border-dashed border-line bg-cream/60 px-6 py-16 text-center">
+    <div className="flex flex-col items-center justify-center rounded-xl border border-dashed border-line bg-cream/60 px-6 py-16 text-center dark:bg-cream/40">
       {icon ? <div className="mb-3 text-ink-faint">{icon}</div> : null}
       <p className="font-serif text-lg font-semibold text-ink">{title}</p>
       {description ? (
@@ -131,7 +131,7 @@ export function Spinner({ className }: { className?: string }) {
 
 export function Card({ children, className }: { children: ReactNode; className?: string }) {
   return (
-    <div className={cn("rounded-2xl border border-line bg-cream shadow-book", className)}>
+    <div className={cn("rounded-2xl border border-line bg-cream shadow-book dark:bg-cream", className)}>
       {children}
     </div>
   );
