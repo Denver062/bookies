@@ -30,8 +30,10 @@ const LANG_FILTERS = [
 
 export function SearchClient({
   savedByGoogleId,
+  isLoggedIn,
 }: {
-  savedByGoogleId: Map<string, Book>;
+  savedByGoogleId?: Map<string, Book>;
+  isLoggedIn?: boolean;
 }) {
   const router = useRouter();
   const [query, setQuery] = useState("");
@@ -188,7 +190,7 @@ export function SearchClient({
               className="grid grid-cols-1 gap-4 lg:grid-cols-2"
             >
               {results.map((info) => {
-                const saved = info.googleId ? savedByGoogleId.get(info.googleId) : undefined;
+                const saved = info.googleId ? savedByGoogleId?.get(info.googleId) : undefined;
                 return (
                   <motion.div
                     key={info.googleId}
@@ -200,6 +202,7 @@ export function SearchClient({
                     <BookCard
                       info={info}
                       book={saved}
+                      isLoggedIn={isLoggedIn}
                       onAddToFolder={
                         saved
                           ? (bookId) => router.push(`/books/${bookId}`)

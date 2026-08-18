@@ -14,11 +14,13 @@ export function BookCard({
   book,
   info,
   className,
+  isLoggedIn,
   onAddToFolder,
 }: {
   book?: Book;
   info?: BookInfo;
   className?: string;
+  isLoggedIn?: boolean;
   onAddToFolder?: (bookId: string) => void;
 }) {
   const router = useRouter();
@@ -47,6 +49,10 @@ export function BookCard({
   }
 
   async function record() {
+    if (!isLoggedIn) {
+      router.push("/auth/login");
+      return;
+    }
     if (book) {
       router.push(`/notes/new?book=${book.id}`);
       return;
@@ -67,6 +73,10 @@ export function BookCard({
       return;
     }
     if (!info) return;
+    if (!isLoggedIn) {
+      router.push("/auth/login");
+      return;
+    }
     setBusy("record");
     try {
       const { id } = await saveBookFromSearchAction(info);
@@ -135,7 +145,7 @@ export function BookCard({
             className="inline-flex h-8 items-center gap-1.5 rounded-lg bg-ink px-3 text-[12px] font-medium text-paper transition-colors hover:bg-ink/90 disabled:opacity-50"
           >
             {busy === "record" ? <Spinner className="h-3.5 w-3.5" /> : <PenLine className="h-3.5 w-3.5" />}
-            {busy === "record" ? "저장 중…" : "기록하기"}
+            {busy === "record" ? "저장 중…" : isLoggedIn ? "기록하기" : "로그인 후 기록"}
           </button>
           {book && book.id && (
             <Link
