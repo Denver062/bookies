@@ -110,13 +110,14 @@ export async function listNotes(userId: string): Promise<Note[]> {
   return Promise.all(data.map((row) => withBookAndCounts(supabase, row)));
 }
 
-export async function listNotesByBook(bookId: string): Promise<Note[]> {
+export async function listNotesByBook(bookId: string, userId?: string): Promise<Note[]> {
   const supabase = await createClient();
-  const { data } = await supabase
+  let query = supabase
     .from("notes")
     .select("*")
-    .eq("book_id", bookId)
-    .order("created_at", { ascending: false });
+    .eq("book_id", bookId);
+  if (userId) query = query.eq("user_id", userId);
+  const { data } = await query.order("created_at", { ascending: false });
 
   if (!data) return [];
   return Promise.all(data.map((row) => withBookAndCounts(supabase, row)));
@@ -262,15 +263,16 @@ export async function deleteNote(id: string): Promise<void> {
   }
 }
 
-export async function getStats(): Promise<Stats> {
+export async function getStats(userId?: string): Promise<Stats> {
   const supabase = await createClient();
+  const userFilter = userId ? { user_id: userId } : {};
   const [booksCount, notesCount, clipsRes, favsCount, pagesRes, ratingsRes] = await Promise.all([
-    supabase.from("books").select("id", { count: "exact", head: true }),
-    supabase.from("notes").select("id", { count: "exact", head: true }),
-    supabase.from("clips").select("id", { count: "exact", head: true }),
-    supabase.from("books").select("id", { count: "exact", head: true }).eq("is_favorite", true),
-    supabase.from("books").select("page_count"),
-    supabase.from("notes").select("rating").not("rating", "is", null),
+    supabase.from("books").select("id", { count: "exact", head: true }).match(userFilter),
+    supabase.from("notes").select("id", { count: "exact", head: true }).match(userFilter),
+    supabase.from("clips").select("id, notes!inner(user_id)", { count: "exact", head: true }).match(userId ? { "notes.user_id": userId } : {}),
+    supabase.from("books").select("id", { count: "exact", head: true }).match({ ...userFilter, is_favorite: true }),
+    supabase.from("books").select("page_count").match(userFilter),
+    supabase.from("notes").select("rating").match(userFilter).not("rating", "is", null),
   ]);
 
   const totalPages = (pagesRes.data ?? []).reduce((sum, b: any) => sum + (b.page_count ?? 0), 0);

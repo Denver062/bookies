@@ -34,11 +34,10 @@ export function HomeHero() {
   return (
     <div className="text-center">
       <h1 className="font-serif text-4xl font-black leading-tight text-ink sm:text-5xl">
-        읽은 책을 기록하고,<br />
-        기록을 발견하세요
+        bookies
       </h1>
       <p className="mt-4 text-sm leading-relaxed text-ink-soft sm:text-base">
-        책을 검색하고 독서 기록을 남겨보세요.
+        읽은 책을 기록하고, 기록을 남겨 보세요.
       </p>
 
       <form onSubmit={handleSubmit} className="mx-auto mt-6 max-w-xl">

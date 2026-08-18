@@ -58,12 +58,14 @@ export async function updateProfileAction(
   const name = String(formData.get("name") || "").trim();
   const email = String(formData.get("email") || "").trim();
   const newPassword = String(formData.get("newPassword") || "");
+  const currentPassword = String(formData.get("currentPassword") || "");
 
   try {
     await updateProfile(session.id, {
       name: name || undefined,
       email: email || undefined,
       newPassword: newPassword || undefined,
+      currentPassword: currentPassword || undefined,
     });
   } catch (e) {
     return { error: e instanceof Error ? e.message : "프로필 수정에 실패했습니다.", success: "" };

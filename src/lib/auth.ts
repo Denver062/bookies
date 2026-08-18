@@ -99,7 +99,7 @@ export async function destroySession(): Promise<void> {
 
 export async function updateProfile(
   userId: string,
-  data: { name?: string; email?: string; newPassword?: string }
+  data: { name?: string; email?: string; newPassword?: string; currentPassword?: string }
 ): Promise<void> {
   const supabase = await createClient();
 
@@ -108,6 +108,20 @@ export async function updateProfile(
       .from("profiles")
       .update({ name: data.name.trim(), updated_at: new Date().toISOString() })
       .eq("id", userId);
+  }
+
+  if (data.email || data.newPassword) {
+    // Verify current password before sensitive changes
+    if (!data.currentPassword) {
+      throw new Error("이메일 또는 비밀번호 변경 시 현재 비밀번호가 필요합니다.");
+    }
+    const { data: userData } = await supabase.auth.getUser();
+    if (!userData?.user?.email) throw new Error("사용자 정보를 찾을 수 없습니다.");
+    const { error: verifyError } = await supabase.auth.signInWithPassword({
+      email: userData.user.email,
+      password: data.currentPassword,
+    });
+    if (verifyError) throw new Error("현재 비밀번호가 올바르지 않습니다.");
   }
 
   if (data.email) {

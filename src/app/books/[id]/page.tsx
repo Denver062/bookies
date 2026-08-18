@@ -42,7 +42,7 @@ export default async function BookDetailPage({
 
   if (book && isOwner) {
     [notes, folders, selectedFolderIds] = await Promise.all([
-      listNotesByBook(book.id),
+      listNotesByBook(book.id, session!.id),
       listFolders(session!.id),
       getFolderIdsForBook(book.id),
     ]);

@@ -8,8 +8,8 @@ import type { NoteInput } from "@/lib/types";
 function sanitize(input: NoteInput): NoteInput {
   return {
     bookId: String(input.bookId || ""),
-    title: String(input.title || "").trim(),
-    content: String(input.content || ""),
+    title: String(input.title || "").trim().slice(0, 200),
+    content: String(input.content || "").slice(0, 50000),
     rating:
       input.rating == null
         ? null
