@@ -3,6 +3,8 @@ import { NextResponse, type NextRequest } from "next/server";
 
 const protectedPaths = ["/notes/new", "/favorites", "/folders", "/profile"];
 
+const protectedExact = ["/books"];
+
 export async function middleware(request: NextRequest) {
   let supabaseResponse = NextResponse.next({ request });
   const { pathname } = request.nextUrl;
@@ -32,7 +34,7 @@ export async function middleware(request: NextRequest) {
     data: { user },
   } = await supabase.auth.getUser();
 
-  const isProtected = protectedPaths.some((p) => pathname === p || pathname.startsWith(p + "/"));
+  const isProtected = protectedPaths.some((p) => pathname === p || pathname.startsWith(p + "/")) || protectedExact.includes(pathname);
   if (pathname.startsWith("/notes/")) {
     const segments = pathname.split("/").filter(Boolean);
     if (segments.length === 3 && segments[2] === "edit") {
@@ -67,6 +69,6 @@ export const config = {
     "/favorites/:path*",
     "/folders/:path*",
     "/profile/:path*",
-    "/books/:path*",
+    "/books",
   ],
 };
