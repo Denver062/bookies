@@ -1,7 +1,7 @@
 "use client";
 
-import { useState, useRef } from "react";
-import { useRouter } from "next/navigation";
+import { useState, useRef, useEffect } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
 import { motion } from "framer-motion";
 import { Search, Loader2, Sparkles, ChevronLeft, ChevronRight } from "lucide-react";
 import { BookCard } from "@/components/book-card";
@@ -36,7 +36,9 @@ export function SearchClient({
   isLoggedIn?: boolean;
 }) {
   const router = useRouter();
-  const [query, setQuery] = useState("");
+  const searchParams = useSearchParams();
+  const initialQ = searchParams.get("q") ?? "";
+  const [query, setQuery] = useState(initialQ);
   const [lang, setLang] = useState("");
   const [results, setResults] = useState<BookInfo[]>([]);
   const [total, setTotal] = useState(0);
@@ -46,6 +48,14 @@ export function SearchClient({
   const [searched, setSearched] = useState(false);
   const queryRef = useRef(query);
   const langRef = useRef(lang);
+  const ranRef = useRef(false);
+
+  useEffect(() => {
+    if (initialQ && !ranRef.current) {
+      ranRef.current = true;
+      runSearch(initialQ, "", 0);
+    }
+  }, [initialQ]);
 
   async function runSearch(q: string, l: string, start = 0) {
     const trimmed = q.trim();

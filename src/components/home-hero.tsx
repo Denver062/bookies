@@ -1,14 +1,24 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Search } from "lucide-react";
 
-const TRENDING_TAGS = ["불편한 편의점", "아몬드", "돈의 속성", "코스모스", "습관", "기록", "트렌드", " 심리학"];
+const TRENDING_TAGS = [
+  "아몬드",
+  "불편한 편의점",
+  "자기계발",
+  "심리",
+  "에세이",
+  "돈의 속성",
+  "인문학",
+  "소설",
+];
 
 export function HomeHero() {
   const router = useRouter();
   const [query, setQuery] = useState("");
+  const [activeTag, setActiveTag] = useState<string | null>(null);
 
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -17,6 +27,7 @@ export function HomeHero() {
   }
 
   function handleTag(tag: string) {
+    setActiveTag(tag);
     router.push(`/search?q=${encodeURIComponent(tag)}`);
   }
 
@@ -54,7 +65,11 @@ export function HomeHero() {
           <button
             key={tag}
             onClick={() => handleTag(tag)}
-            className="rounded-full border border-line bg-white px-3 py-1.5 text-[13px] font-medium text-ink-soft transition-colors hover:border-accent/40 hover:text-accent-deep"
+            className={`rounded-full border px-3 py-1.5 text-[13px] font-medium transition-colors ${
+              activeTag === tag
+                ? "border-accent bg-accent/10 text-accent-deep"
+                : "border-line bg-white text-ink-soft hover:border-accent/40 hover:text-accent-deep"
+            }`}
           >
             #{tag}
           </button>

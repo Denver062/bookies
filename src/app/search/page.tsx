@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import { listBooks } from "@/lib/books";
 import { getSession } from "@/lib/auth";
 import { SearchClient } from "@/components/search-client";
@@ -19,5 +20,9 @@ export default async function SearchPage() {
     );
   }
 
-  return <SearchClient savedByGoogleId={savedByGoogleId} isLoggedIn={!!session} />;
+  return (
+    <Suspense fallback={<div className="animate-pulse space-y-4"><div className="h-12 w-full rounded-xl bg-ink/5" /><div className="h-8 w-40 rounded bg-ink/5" /></div>}>
+      <SearchClient savedByGoogleId={savedByGoogleId} isLoggedIn={!!session} />
+    </Suspense>
+  );
 }
