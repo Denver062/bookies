@@ -1,12 +1,9 @@
-
-> bookies@0.1.0 dev
-> next dev
-
 ▲ Next.js 16.3.1 (Turbopack)
 - Local:         http://localhost:3000
 - Network:       http://128.134.191.140:3000
-✓ Ready in 343ms
-✓ Running next.config.ts took 28ms
+- Environments: .env.local
+✓ Ready in 355ms
+✓ Running next.config.ts took 34ms
 ⚠ The "middleware" file convention is deprecated. Please use "proxy" instead.
 
   To migrate automatically, run:
@@ -16,15 +13,4 @@
 - Experiments (use with caution):
   · serverActions
 
- GET /auth/login 200 in 279ms (next.js: 134ms, application-code: 146ms)
- POST /auth/register 200 in 49ms (next.js: 16ms, application-code: 33ms)
- GET /auth/login 200 in 30ms (next.js: 3ms, application-code: 27ms)
-⨯ Error: Failed to find Server Action. This request might be from an older or newer deployment.
-Read more: https://nextjs.org/docs/messages/failed-to-find-server-action
-    at ignore-listed frames
-⨯ Error: Failed to find Server Action. This request might be from an older or newer deployment.
-Read more: https://nextjs.org/docs/messages/failed-to-find-server-action
-    at ignore-listed frames {
-  page: '/auth/register'
-}
- POST /auth/register 500 in 881ms (next.js: 803ms, application-code: 78ms)
+ GET /cgi-bin/login.cgi 404 in 265ms (next.js: 145ms, application-code: 119ms)

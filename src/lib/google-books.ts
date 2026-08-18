@@ -110,6 +110,31 @@ export async function fetchBookById(googleId: string): Promise<BookInfo | null> 
   };
 }
 
+export async function fetchCuratedBooks(
+  query: string,
+  maxResults = 6
+): Promise<BookInfo[]> {
+  const { books } = await searchGoogleBooks(query, maxResults, "ko");
+  return books;
+}
+
+export async function fetchRandomFeaturedBook(): Promise<BookInfo | null> {
+  const queries = [
+    "subject:fiction korean",
+    "subject:self-help korean",
+    "subject:psychology korean",
+    "subject:essay korean",
+    "intitle:기록",
+    "intitle:독서",
+    "subject:literary fiction",
+    "subject:philosophy",
+  ];
+  const q = queries[Math.floor(Math.random() * queries.length)];
+  const { books } = await searchGoogleBooks(q, 10, "ko");
+  if (!books.length) return null;
+  return books[Math.floor(Math.random() * books.length)];
+}
+
 function normalizeImage(url?: string): string | undefined {
   if (!url) return undefined;
   let u = url.startsWith("http://") ? url.replace("http://", "https://") : url;
