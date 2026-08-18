@@ -18,11 +18,11 @@ export function BookPreviewCard({ book }: { book: BookInfo }) {
       : book.description
     : "아직 소개가 없습니다.";
 
-  async function handleRecord() {
+  async function handleView() {
     setBusy(true);
     try {
       const { id } = await saveBookFromSearchAction(book);
-      router.push(`/notes/new?book=${id}`);
+      router.push(`/books/${id}`);
     } finally {
       setBusy(false);
     }
@@ -53,7 +53,7 @@ export function BookPreviewCard({ book }: { book: BookInfo }) {
         </p>
         <div className="mt-auto flex items-center gap-2 pt-4">
           <button
-            onClick={handleRecord}
+            onClick={handleView}
             disabled={busy}
             className="inline-flex h-9 items-center gap-2 rounded-lg bg-ink px-4 text-[13px] font-medium text-paper transition-colors hover:bg-ink/90 disabled:opacity-50"
           >
