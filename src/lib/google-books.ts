@@ -120,14 +120,14 @@ export async function fetchCuratedBooks(
 
 export async function fetchRandomFeaturedBook(): Promise<BookInfo | null> {
   const queries = [
-    "subject:fiction korean",
-    "subject:self-help korean",
-    "subject:psychology korean",
-    "subject:essay korean",
-    "intitle:기록",
-    "intitle:독서",
-    "subject:literary fiction",
-    "subject:philosophy",
+    "불편한 편의점",
+    "아몬드 손원평",
+    "돈의 속성",
+    "지구 끝의 온실",
+    "나의 하루는 4시 30분에 시작된다",
+    "부의 추월 차선",
+    "역행자",
+    "코스모스 칼 세이건",
   ];
   const q = queries[Math.floor(Math.random() * queries.length)];
   const { books } = await searchGoogleBooks(q, 10, "ko");
