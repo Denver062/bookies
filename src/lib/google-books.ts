@@ -23,6 +23,18 @@ type GoogleVolume = {
   };
 };
 
+const FIVE_YEARS_AGO = (() => {
+  const d = new Date();
+  d.setFullYear(d.getFullYear() - 5);
+  return d.toISOString().slice(0, 4);
+})();
+
+function isRecent(dateStr?: string): boolean {
+  if (!dateStr) return false;
+  const year = parseInt(dateStr.slice(0, 4), 10);
+  return !isNaN(year) && year >= Number(FIVE_YEARS_AGO);
+}
+
 export async function searchGoogleBooks(
   query: string,
   maxResults = 10,
@@ -79,6 +91,38 @@ export async function searchGoogleBooks(
   return { books: Array.from(unique.values()), total };
 }
 
+async function fetchRecentBooks(
+  query: string,
+  maxResults: number
+): Promise<BookInfo[]> {
+  const results = await searchGoogleBooks(query, maxResults * 3, "ko");
+  return results.books.filter((b) => isRecent(b.publishedAt)).slice(0, maxResults);
+}
+
+export async function fetchCuratedBooks(
+  query: string,
+  maxResults = 6
+): Promise<BookInfo[]> {
+  return fetchRecentBooks(query, maxResults);
+}
+
+export async function fetchRandomFeaturedBook(): Promise<BookInfo | null> {
+  const queries = [
+    "subject:fiction",
+    "subject:self-help",
+    "subject:psychology",
+    "subject:essay",
+    "subject:literary fiction",
+    "subject:philosophy",
+    "subject:business",
+    "subject:science",
+  ];
+  const q = queries[Math.floor(Math.random() * queries.length)];
+  const books = await fetchRecentBooks(q, 10);
+  if (!books.length) return null;
+  return books[Math.floor(Math.random() * books.length)];
+}
+
 export async function fetchBookById(googleId: string): Promise<BookInfo | null> {
   let url = `${API}/${encodeURIComponent(googleId)}`;
   if (API_KEY) url += `?key=${API_KEY}`;
@@ -108,39 +152,6 @@ export async function fetchBookById(googleId: string): Promise<BookInfo | null> 
     averageRating: v.averageRating,
     ratingsCount: v.ratingsCount,
   };
-}
-
-function isRecent(pubDate: string | undefined, years = 2): boolean {
-  if (!pubDate) return false;
-  const year = parseInt(pubDate.slice(0, 4), 10);
-  if (isNaN(year)) return false;
-  const cutoff = new Date().getFullYear() - years;
-  return year >= cutoff;
-}
-
-export async function fetchCuratedBooks(
-  query: string,
-  maxResults = 6
-): Promise<BookInfo[]> {
-  const { books } = await searchGoogleBooks(query, 30, "ko");
-  return books.filter((b) => isRecent(b.publishedAt)).slice(0, maxResults);
-}
-
-export async function fetchRandomFeaturedBook(): Promise<BookInfo | null> {
-  const queries = [
-    "subject:fiction korean",
-    "subject:self-help korean",
-    "subject:psychology korean",
-    "subject:essay korean",
-    "intitle:기록",
-    "subject:literary fiction",
-    "subject:philosophy",
-  ];
-  const q = queries[Math.floor(Math.random() * queries.length)];
-  const { books } = await searchGoogleBooks(q, 30, "ko");
-  const recent = books.filter((b) => isRecent(b.publishedAt));
-  if (!recent.length) return null;
-  return recent[Math.floor(Math.random() * recent.length)];
 }
 
 function normalizeImage(url?: string): string | undefined {

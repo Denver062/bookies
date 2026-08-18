@@ -7,7 +7,7 @@ import { BookCard } from "@/components/book-card";
 import { HomeHero } from "@/components/home-hero";
 import { BookPreviewCard, BookPreviewSkeleton } from "@/components/book-preview-card";
 import { CuratedBookCard } from "@/components/curated-book-card";
-import { fetchCuratedBooks, fetchRandomFeaturedBook } from "@/lib/google-books";
+import { fetchCuratedBooks, fetchRandomFeaturedBook } from "@/lib/aladin";
 import { Suspense } from "react";
 
 export const dynamic = "force-dynamic";
@@ -118,25 +118,25 @@ export default async function HomePage() {
 
       <Suspense fallback={null}>
         <CuratedSection
-          title="요즘 많이 읽는 소설"
+          title="오늘 밤 읽기 좋은 소설"
           icon={BookOpen}
-          query="불편한 편의점 2 OR 편의점 인간 OR 아몬드 OR 지구 끝의 온실 OR 정유정 소설 OR 소설 문학"
+          query="subject:fiction"
         />
       </Suspense>
 
       <Suspense fallback={null}>
         <CuratedSection
-          title="자기 성장을 위한 책"
+          title="마음을 다잡아주는 심리학 책"
           icon={Sparkles}
-          query="습관의 힘 OR 부의 추월 차선 OR 마이크로 습관 OR 독서의 기술"
+          query="subject:psychology"
         />
       </Suspense>
 
       <Suspense fallback={null}>
         <CuratedSection
-          title="바쁜 날을 위한 에세이"
+          title="자기계발과 습관"
           icon={ClipboardList}
-          query="나의 하루는 4시 30분에 시작된다 OR 어떻게 말할 것인가 OR 서유연 에세이 OR 오늘은 틀려도 괜찮아"
+          query="subject:self-help"
         />
       </Suspense>
 
