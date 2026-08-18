@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { notFound, redirect } from "next/navigation";
+import { notFound } from "next/navigation";
 import { ArrowLeft, CalendarDays, FileText, Hash, BookMarked, Star } from "lucide-react";
 import { getBookById } from "@/lib/books";
 import { listNotesByBook } from "@/lib/notes";
@@ -21,18 +21,16 @@ export default async function BookDetailPage({
   params,
 }: PageProps<"/books/[id]">) {
   const session = await getSession();
-  if (!session) redirect("/auth/login");
 
   const { id } = await params;
-  const [book, notes, folders, selectedFolderIds] = await Promise.all([
+  const [book, notes, selectedFolderIds, userFolders] = await Promise.all([
     getBookById(id),
     listNotesByBook(id),
-    listFolders(session.id),
     getFolderIdsForBook(id),
+    session ? listFolders(session.id) : Promise.resolve([]),
   ]);
 
   if (!book) notFound();
-  if (book.userId !== session.id) notFound();
 
   return (
     <div>
@@ -112,7 +110,7 @@ export default async function BookDetailPage({
           </dl>
 
           <div className="mt-6">
-            <BookActions book={book} folders={folders} selectedFolderIds={selectedFolderIds} />
+            <BookActions book={book} folders={userFolders} selectedFolderIds={selectedFolderIds} isLoggedIn={!!session} />
           </div>
         </div>
       </div>
@@ -131,12 +129,21 @@ export default async function BookDetailPage({
         {notes.length === 0 ? (
           <p className="rounded-2xl border border-dashed border-line bg-cream/60 px-6 py-10 text-center text-sm text-ink-soft">
             아직 기록이 없어요.{" "}
-            <Link
-              href={`/notes/new?book=${book.id}`}
-              className="font-semibold text-accent-deep underline hover:text-accent"
-            >
-              기록하기
-            </Link>
+            {session ? (
+              <Link
+                href={`/notes/new?book=${book.id}`}
+                className="font-semibold text-accent-deep underline hover:text-accent"
+              >
+                기록하기
+              </Link>
+            ) : (
+              <Link
+                href="/auth/login"
+                className="font-semibold text-accent-deep underline hover:text-accent"
+              >
+                로그인하고 기록하기
+              </Link>
+            )}
             버튼으로 첫 기록을 남겨보세요.
           </p>
         ) : (

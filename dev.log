@@ -55,3 +55,482 @@
  GET / 200 in 1401ms (next.js: 6ms, application-code: 1395ms)
  GET / 200 in 807ms (next.js: 6ms, application-code: 801ms)
  GET / 200 in 1630ms (next.js: 5ms, application-code: 1625ms)
+ GET / 200 in 2.5s (next.js: 4ms, application-code: 2.5s)
+ GET / 200 in 1426ms (next.js: 6ms, application-code: 1420ms)
+ GET / 200 in 34ms (next.js: 6ms, application-code: 29ms)
+ GET / 200 in 36ms (next.js: 6ms, application-code: 30ms)
+ GET / 200 in 1356ms (next.js: 7ms, application-code: 1349ms)
+ GET / 200 in 2.7s (next.js: 4ms, application-code: 2.7s)
+ GET / 200 in 1429ms (next.js: 7ms, application-code: 1422ms)
+ GET / 200 in 2.2s (next.js: 7ms, application-code: 2.2s)
+ GET / 200 in 2.7s (next.js: 4ms, application-code: 2.7s)
+ GET / 200 in 819ms (next.js: 6ms, application-code: 813ms)
+ GET / 200 in 1472ms (next.js: 6ms, application-code: 1466ms)
+ GET / 200 in 1474ms (next.js: 6ms, application-code: 1468ms)
+ GET / 200 in 2.6s (next.js: 3ms, application-code: 2.6s)
+ GET / 200 in 2.6s (next.js: 3ms, application-code: 2.6s)
+ GET / 200 in 1349ms (next.js: 7ms, application-code: 1342ms)
+ GET / 200 in 38ms (next.js: 6ms, application-code: 32ms)
+  Reload env: .env.local
+ GET / 200 in 740ms (next.js: 74ms, application-code: 665ms)
+ GET / 200 in 1885ms (next.js: 3ms, application-code: 1881ms)
+ GET / 200 in 4.9s (next.js: 9ms, application-code: 4.9s)
+ GET / 200 in 2.2s (next.js: 3ms, application-code: 2.2s)
+✓ Compiled in 33ms
+ GET / 200 in 891ms (next.js: 6ms, application-code: 885ms)
+✓ Compiled in 31ms
+ GET / 200 in 1048ms (next.js: 7ms, application-code: 1042ms)
+[browser] [bookies error] handleRecord is not defined BookPreviewCard@http://localhost:3000/_next/static/chunks/_1vlayw6._.js?id=%255Bproject%255D/src/components/book-preview-card.tsx+%255Bapp-client%255D+(ecmascript):100:29
+react_stack_bottom_frame@http://localhost:3000/_next/static/chunks/node_modules_next_dist_compiled_react-dom_096_9a-._.js:14894:24
+renderWithHooks@http://localhost:3000/_next/static/chunks/node_modules_next_dist_compiled_react-dom_096_9a-._.js:4425:42
+updateFunctionComponent@http://localhost:3000/_next/static/chunks/node_modules_next_dist_compiled_react-dom_096_9a-._.js:5892:21
+beginWork@http://localhost:3000/_next/static/chunks/node_modules_next_dist_compiled_react-dom_096_9a-._.js:6518:24
+runWithFiberInDEV@http://localhost:3000/_next/static/chunks/node_modules_next_dist_compiled_react-dom_096_9a-._.js:761:131
+performUnitOfWork@http://localhost:3000/_next/static/chunks/node_modules_next_dist_compiled_react-dom_096_9a-._.js:9385:97
+workLoopSync@http://localhost:3000/_next/static/chunks/node_modules_next_dist_compiled_react-dom_096_9a-._.js:9279:57
+renderRootSync@http://localhost:3000/_next/static/chunks/node_modules_next_dist_compiled_react-dom_096_9a-._.js:9263:13
+performWorkOnRoot@http://localhost:3000/_next/static/chunks/node_modules_next_dist_compiled_react-dom_096_9a-._.js:8928:47
+performSyncWorkOnRoot@http://localhost:3000/_next/static/chunks/node_modules_next_dist_compiled_react-dom_096_9a-._.js:10093:26
+flushSyncWorkAcrossRoots_impl@http://localhost:3000/_next/static/chunks/node_modules_next_dist_compiled_react-dom_096_9a-._.js:10009:316
+processRootScheduleInMicrotask@http://localhost:3000/_next/static/chunks/node_modules_next_dist_compiled_react-dom_096_9a-._.js:10030:106
+scheduleImmediateRootScheduleTask/<@http://localhost:3000/_next/static/chunks/node_modules_next_dist_compiled_react-dom_096_9a-._.js:10104:158
+ 
+[browser] [bookies error] handleRecord is not defined BookPreviewCard@http://localhost:3000/_next/static/chunks/_1vlayw6._.js?id=%255Bproject%255D/src/components/book-preview-card.tsx+%255Bapp-client%255D+(ecmascript):100:29
+react_stack_bottom_frame@http://localhost:3000/_next/static/chunks/node_modules_next_dist_compiled_react-dom_096_9a-._.js:14894:24
+renderWithHooks@http://localhost:3000/_next/static/chunks/node_modules_next_dist_compiled_react-dom_096_9a-._.js:4425:42
+updateFunctionComponent@http://localhost:3000/_next/static/chunks/node_modules_next_dist_compiled_react-dom_096_9a-._.js:5892:21
+beginWork@http://localhost:3000/_next/static/chunks/node_modules_next_dist_compiled_react-dom_096_9a-._.js:6518:24
+runWithFiberInDEV@http://localhost:3000/_next/static/chunks/node_modules_next_dist_compiled_react-dom_096_9a-._.js:761:131
+performUnitOfWork@http://localhost:3000/_next/static/chunks/node_modules_next_dist_compiled_react-dom_096_9a-._.js:9385:97
+workLoopSync@http://localhost:3000/_next/static/chunks/node_modules_next_dist_compiled_react-dom_096_9a-._.js:9279:57
+renderRootSync@http://localhost:3000/_next/static/chunks/node_modules_next_dist_compiled_react-dom_096_9a-._.js:9263:13
+performWorkOnRoot@http://localhost:3000/_next/static/chunks/node_modules_next_dist_compiled_react-dom_096_9a-._.js:8928:47
+performSyncWorkOnRoot@http://localhost:3000/_next/static/chunks/node_modules_next_dist_compiled_react-dom_096_9a-._.js:10093:26
+flushSyncWorkAcrossRoots_impl@http://localhost:3000/_next/static/chunks/node_modules_next_dist_compiled_react-dom_096_9a-._.js:10009:316
+processRootScheduleInMicrotask@http://localhost:3000/_next/static/chunks/node_modules_next_dist_compiled_react-dom_096_9a-._.js:10030:106
+scheduleImmediateRootScheduleTask/<@http://localhost:3000/_next/static/chunks/node_modules_next_dist_compiled_react-dom_096_9a-._.js:10104:158
+ 
+✓ Compiled in 28ms
+ GET / 200 in 46ms (next.js: 6ms, application-code: 40ms)
+ GET / 200 in 1357ms (next.js: 4ms, application-code: 1353ms)
+ GET /books/bk_msyvyfrw_qt2fpwxs 200 in 717ms (next.js: 18ms, proxy.ts: 142ms, application-code: 556ms)
+ GET /books/bk_msyvyfrw_qt2fpwxs 200 in 753ms (next.js: 4ms, proxy.ts: 89ms, application-code: 661ms)
+ POST / 200 in 1669ms (next.js: 3ms, application-code: 1666ms)
+  └─ ƒ saveBookFromSearchAction({"authors":["미겔 데 세르반떼스","메리 셸리","오노레 드 발자크","... 59 items not stringified"],"description":"종이책의 쓸모를 묻는 시대, 노벨라와 활판인쇄의 의미를 되새기고 새로 새길 가치가 있다고 믿으며 세계 중편소설 선집 ‘노벨라33’을 선보인다. 문학사에 이름을 남긴 작가 33인의 노벨라 33편을 고전의 반열에 오른 작품부터 국내 초역 작품까지 고루 선별하고 오늘의 새로운 언어로 해석했다.","googleId":"aladin-374919090","...":"7 items not stringified"}) in 517ms src/actions/books.ts
+ GET / 200 in 907ms (next.js: 3ms, application-code: 904ms)
+ GET /books/bk_msyvymk9_66nxp4nj 200 in 557ms (next.js: 9ms, proxy.ts: 116ms, application-code: 432ms)
+ GET /books/bk_msyvymk9_66nxp4nj 200 in 523ms (next.js: 5ms, proxy.ts: 106ms, application-code: 412ms)
+ POST / 200 in 1554ms (next.js: 3ms, application-code: 1551ms)
+  └─ ƒ saveBookFromSearchAction({"authors":["스티브 매그니스","이은경"],"description":"최신 뇌과학, 심리학 연구를 토대로 이 악순환을 해부하고, 빠져나오는 길을 제시한다. 저자는 멘탈이 강한 사람이 되라고 강요하지 않는다. 대신 자기 안의 예측 체계를 이해하고, 정체성의 유연함을 되찾으며, 생존을 넘어 온전히 나답게 살아가는 구체적인 방법을 다룬다.","googleId":"aladin-392915829","...":"6 items not stringified"}) in 361ms src/actions/books.ts
+ GET /books 200 in 573ms (next.js: 21ms, proxy.ts: 131ms, application-code: 421ms)
+ GET / 200 in 1133ms (next.js: 4ms, application-code: 1129ms)
+ GET /books 200 in 460ms (next.js: 4ms, proxy.ts: 98ms, application-code: 358ms)
+ GET /profile 200 in 558ms (next.js: 11ms, proxy.ts: 90ms, application-code: 456ms)
+ POST /profile 200 in 218ms (next.js: 4ms, proxy.ts: 97ms, application-code: 116ms)
+  └─ ƒ logoutAction() in 98ms src/actions/auth.ts
+ GET / 200 in 819ms (next.js: 3ms, application-code: 815ms)
+ GET / 200 in 1080ms (next.js: 9ms, application-code: 1072ms)
+ GET / 200 in 917ms (next.js: 3ms, application-code: 915ms)
+ GET /auth/login?from=%2Fbooks 307 in 16ms
+ GET /auth/login?from=%2Fbooks 200 in 15ms (next.js: 5ms, application-code: 10ms)
+ GET /search 200 in 19ms (next.js: 9ms, application-code: 10ms)
+ GET /auth/login 200 in 12ms (next.js: 3ms, application-code: 9ms)
+ GET /auth/login 200 in 15ms (next.js: 3ms, application-code: 12ms)
+ GET / 200 in 751ms (next.js: 3ms, application-code: 747ms)
+ GET /auth/login 200 in 14ms (next.js: 3ms, application-code: 11ms)
+ GET / 200 in 231ms (next.js: 3ms, application-code: 228ms)
+ GET / 200 in 1461ms (next.js: 3ms, application-code: 1458ms)
+ GET / 200 in 423ms (next.js: 3ms, application-code: 421ms)
+ GET /wiki 404 in 38ms (next.js: 12ms, application-code: 26ms)
+⨯ Error: 로그인이 필요합니다.
+    at requireAuth (src\lib\auth.ts:36:23)
+    at async saveBookFromSearchAction (src\actions\books.ts:12:16)
+  34 | export async function requireAuth(): Promise<SessionUser> {
+  35 |   const session = await getSession();
+> 36 |   if (!session) throw new Error("로그인이 필요합니다.");
+     |                       ^
+  37 |   return session;
+  38 | }
+  39 | {
+  digest: '1027196315'
+}
+ POST / 500 in 240ms (next.js: 4ms, application-code: 236ms)
+  └─ ƒ saveBookFromSearchAction({"authors":["미겔 데 세르반떼스","메리 셸리","오노레 드 발자크","... 59 items not stringified"],"description":"종이책의 쓸모를 묻는 시대, 노벨라와 활판인쇄의 의미를 되새기고 새로 새길 가치가 있다고 믿으며 세계 중편소설 선집 ‘노벨라33’을 선보인다. 문학사에 이름을 남긴 작가 33인의 노벨라 33편을 고전의 반열에 오른 작품부터 국내 초역 작품까지 고루 선별하고 오늘의 새로운 언어로 해석했다.","googleId":"aladin-374919090","...":"7 items not stringified"}) in 15ms src/actions/books.ts
+[browser] ⨯ unhandledRejection: Error: 로그인이 필요합니다.
+    at requireAuth (src\lib\auth.ts:36:23)
+    at saveBookFromSearchAction (src\actions\books.ts:12:16)
+  34 | export async function requireAuth(): Promise<SessionUser> {
+  35 |   const session = await getSession();
+> 36 |   if (!session) throw new Error("로그인이 필요합니다.");
+     |                       ^
+  37 |   return session;
+  38 | }
+  39 |
+ GET / 200 in 1437ms (next.js: 3ms, application-code: 1434ms)
+⨯ Error: 로그인이 필요합니다.
+    at requireAuth (src\lib\auth.ts:36:23)
+    at async saveBookFromSearchAction (src\actions\books.ts:12:16)
+  34 | export async function requireAuth(): Promise<SessionUser> {
+  35 |   const session = await getSession();
+> 36 |   if (!session) throw new Error("로그인이 필요합니다.");
+     |                       ^
+  37 |   return session;
+  38 | }
+  39 | {
+  digest: '1027196315'
+}
+ POST / 500 in 15ms (next.js: 2ms, application-code: 13ms)
+  └─ ƒ saveBookFromSearchAction({"authors":["이반 세르게예비치 투르게네프","김강철"],"description":"종이책의 쓸모를 묻는 시대, 노벨라와 활판인쇄의 의미를 되새기고 새로 새길 가치가 있다고 믿으며 세계 중편소설 선집 ‘노벨라33’을 선보인다. 문학사에 이름을 남긴 작가 33인의 노벨라 33편을 고전의 반열에 오른 작품부터 국내 초역 작품까지 고루 선별하고 오늘의 새로운 언어로 해석했다.","googleId":"aladin-374803857","...":"6 items not stringified"}) in 7ms src/actions/books.ts
+[browser] ⨯ unhandledRejection: Error: 로그인이 필요합니다.
+    at requireAuth (src\lib\auth.ts:36:23)
+    at saveBookFromSearchAction (src\actions\books.ts:12:16)
+  34 | export async function requireAuth(): Promise<SessionUser> {
+  35 |   const session = await getSession();
+> 36 |   if (!session) throw new Error("로그인이 필요합니다.");
+     |                       ^
+  37 |   return session;
+  38 | }
+  39 |
+ GET / 200 in 44ms (next.js: 4ms, application-code: 40ms)
+ GET / 200 in 36ms (next.js: 4ms, application-code: 32ms)
+ GET / 200 in 34ms (next.js: 4ms, application-code: 30ms)
+✓ Compiled in 37ms
+ GET / 200 in 51ms (next.js: 9ms, application-code: 42ms)
+✓ Compiled in 36ms
+ GET / 200 in 55ms (next.js: 9ms, application-code: 46ms)
+ GET / 200 in 34ms (next.js: 3ms, application-code: 31ms)
+ GET / 200 in 48ms (next.js: 4ms, application-code: 45ms)
+✓ Compiled in 40ms
+ GET / 200 in 53ms (next.js: 8ms, application-code: 46ms)
+ GET /search?q=%EB%B6%88%ED%8E%B8%ED%95%9C+%ED%8E%B8%EC%9D%98%EC%A0%90 200 in 23ms (next.js: 10ms, application-code: 13ms)
+ GET / 200 in 693ms (next.js: 3ms, application-code: 690ms)
+ GET /search?q=+%EC%8B%AC%EB%A6%AC%ED%95%99 200 in 17ms (next.js: 4ms, application-code: 13ms)
+ GET / 200 in 362ms (next.js: 3ms, application-code: 359ms)
+ GET /search?q=sdfsdf 200 in 16ms (next.js: 4ms, application-code: 12ms)
+ GET / 200 in 250ms (next.js: 4ms, application-code: 246ms)
+ GET /search 200 in 15ms (next.js: 3ms, application-code: 11ms)
+ GET / 200 in 412ms (next.js: 3ms, application-code: 409ms)
+✓ Compiled in 39ms
+ GET / 200 in 38ms (next.js: 6ms, application-code: 32ms)
+ GET / 200 in 31ms (next.js: 3ms, application-code: 28ms)
+ GET / 200 in 34ms (next.js: 3ms, application-code: 31ms)
+ GET /search?q=%EC%95%84%EB%AA%AC%EB%93%9C 200 in 25ms (next.js: 7ms, application-code: 18ms)
+ GET /search?q=%EC%95%84%EB%AA%AC%EB%93%9C 200 in 38ms (next.js: 4ms, application-code: 34ms)
+ GET /api/search?q=%EC%95%84%EB%AA%AC%EB%93%9C&start=0&max=10 200 in 1562ms (next.js: 21ms, application-code: 1541ms)
+ GET / 200 in 1235ms (next.js: 3ms, application-code: 1232ms)
+ GET /search?q=%EC%8B%AC%EB%A6%AC 200 in 15ms (next.js: 3ms, application-code: 12ms)
+ GET /api/search?q=%EC%8B%AC%EB%A6%AC&start=0&max=10 200 in 1499ms (next.js: 2ms, application-code: 1497ms)
+ GET /auth/login 200 in 13ms (next.js: 3ms, application-code: 10ms)
+ GET /api/search?q=%EC%8B%AC%EB%A6%AC&start=0&max=10 200 in 1521ms (next.js: 3ms, application-code: 1518ms)
+ GET /auth/login 200 in 17ms (next.js: 4ms, application-code: 13ms)
+ GET /api/search?q=%EC%8B%AC%EB%A6%AC&start=0&max=10 200 in 1473ms (next.js: 2ms, application-code: 1471ms)
+✓ Compiled in 22ms
+[browser] ./src/app/books/[id]/page.tsx:22:28
+Error: Unterminated string constant
+  20 | export default async function BookDetailPage({
+  21 |   params,
+> 22 | }: PageProps<"/books/[id]">") {
+     |                            ^^^^
+  23 |   const session = await getSession();
+  24 |
+  25 |   const { id } = await params;
+
+Parsing ecmascript source code failed 
+[browser] ./src/app/books/[id]/page.tsx:22:28
+Error: Unterminated string constant
+  20 | export default async function BookDetailPage({
+  21 |   params,
+> 22 | }: PageProps<"/books/[id]">") {
+     |                            ^^^^
+  23 |   const session = await getSession();
+  24 |
+  25 |   const { id } = await params;
+
+Parsing ecmascript source code failed 
+[browser] ./src/app/books/[id]/page.tsx:22:28
+Error: Unterminated string constant
+  20 | export default async function BookDetailPage({
+  21 |   params,
+> 22 | }: PageProps<"/books/[id]">") {
+     |                            ^^^^
+  23 |   const session = await getSession();
+  24 |
+  25 |   const { id } = await params;
+
+Parsing ecmascript source code failed 
+[browser] ./src/app/books/[id]/page.tsx:22:28
+Error: Unterminated string constant
+  20 | export default async function BookDetailPage({
+  21 |   params,
+> 22 | }: PageProps<"/books/[id]">") {
+     |                            ^^^^
+  23 |   const session = await getSession();
+  24 |
+  25 |   const { id } = await params;
+
+Parsing ecmascript source code failed 
+[browser] ./src/app/books/[id]/page.tsx:22:28
+Error: Unterminated string constant
+  20 | export default async function BookDetailPage({
+  21 |   params,
+> 22 | }: PageProps<"/books/[id]">") {
+     |                            ^^^^
+  23 |   const session = await getSession();
+  24 |
+  25 |   const { id } = await params;
+
+Parsing ecmascript source code failed 
+[browser] ./src/app/books/[id]/page.tsx:22:28
+Error: Unterminated string constant
+  20 | export default async function BookDetailPage({
+  21 |   params,
+> 22 | }: PageProps<"/books/[id]">") {
+     |                            ^^^^
+  23 |   const session = await getSession();
+  24 |
+  25 |   const { id } = await params;
+
+Parsing ecmascript source code failed 
+[browser] ./src/app/books/[id]/page.tsx:22:28
+Error: Unterminated string constant
+  20 | export default async function BookDetailPage({
+  21 |   params,
+> 22 | }: PageProps<"/books/[id]">") {
+     |                            ^^^^
+  23 |   const session = await getSession();
+  24 |
+  25 |   const { id } = await params;
+
+Parsing ecmascript source code failed 
+[browser] ./src/app/books/[id]/page.tsx:22:28
+Error: Unterminated string constant
+  20 | export default async function BookDetailPage({
+  21 |   params,
+> 22 | }: PageProps<"/books/[id]">") {
+     |                            ^^^^
+  23 |   const session = await getSession();
+  24 |
+  25 |   const { id } = await params;
+
+Parsing ecmascript source code failed 
+[browser] ./src/app/books/[id]/page.tsx:22:28
+Error: Unterminated string constant
+  20 | export default async function BookDetailPage({
+  21 |   params,
+> 22 | }: PageProps<"/books/[id]">") {
+     |                            ^^^^
+  23 |   const session = await getSession();
+  24 |
+  25 |   const { id } = await params;
+
+Parsing ecmascript source code failed 
+[browser] ./src/app/books/[id]/page.tsx:22:28
+Error: Unterminated string constant
+  20 | export default async function BookDetailPage({
+  21 |   params,
+> 22 | }: PageProps<"/books/[id]">") {
+     |                            ^^^^
+  23 |   const session = await getSession();
+  24 |
+  25 |   const { id } = await params;
+
+Parsing ecmascript source code failed 
+ GET /search?q=%EC%8B%AC%EB%A6%AC 500 in 426ms (next.js: 349ms, application-code: 77ms)
+[browser] Uncaught Error: ./src/app/books/[id]/page.tsx:22:28
+Error: Unterminated string constant
+  20 | export default async function BookDetailPage({
+  21 |   params,
+> 22 | }: PageProps<"/books/[id]">") {
+     |                            ^^^^
+  23 |   const session = await getSession();
+  24 |
+  25 |   const { id } = await params;
+
+Parsing ecmascript source code failed
+
+
+    at <unknown> (Error: ./src/app/books/[id]/page.tsx:22:28)
+    at <unknown> (Error: (./src/app/books/[id]/page.tsx:22:28)
+[browser] ./src/app/books/[id]/page.tsx:22:28
+Error: Unterminated string constant
+  20 | export default async function BookDetailPage({
+  21 |   params,
+> 22 | }: PageProps<"/books/[id]">") {
+     |                            ^^^^
+  23 |   const session = await getSession();
+  24 |
+  25 |   const { id } = await params;
+
+Parsing ecmascript source code failed 
+[browser] ./src/app/books/[id]/page.tsx:22:28
+Error: Unterminated string constant
+  20 | export default async function BookDetailPage({
+  21 |   params,
+> 22 | }: PageProps<"/books/[id]">") {
+     |                            ^^^^
+  23 |   const session = await getSession();
+  24 |
+  25 |   const { id } = await params;
+
+Parsing ecmascript source code failed 
+[browser] ./src/app/books/[id]/page.tsx:22:28
+Error: Unterminated string constant
+  20 | export default async function BookDetailPage({
+  21 |   params,
+> 22 | }: PageProps<"/books/[id]">") {
+     |                            ^^^^
+  23 |   const session = await getSession();
+  24 |
+  25 |   const { id } = await params;
+
+Parsing ecmascript source code failed 
+[browser] ./src/app/books/[id]/page.tsx:22:28
+Error: Unterminated string constant
+  20 | export default async function BookDetailPage({
+  21 |   params,
+> 22 | }: PageProps<"/books/[id]">") {
+     |                            ^^^^
+  23 |   const session = await getSession();
+  24 |
+  25 |   const { id } = await params;
+
+Parsing ecmascript source code failed 
+[browser] ./src/app/books/[id]/page.tsx:22:28
+Error: Unterminated string constant
+  20 | export default async function BookDetailPage({
+  21 |   params,
+> 22 | }: PageProps<"/books/[id]">") {
+     |                            ^^^^
+  23 |   const session = await getSession();
+  24 |
+  25 |   const { id } = await params;
+
+Parsing ecmascript source code failed 
+[browser] ./src/app/books/[id]/page.tsx:22:28
+Error: Unterminated string constant
+  20 | export default async function BookDetailPage({
+  21 |   params,
+> 22 | }: PageProps<"/books/[id]">") {
+     |                            ^^^^
+  23 |   const session = await getSession();
+  24 |
+  25 |   const { id } = await params;
+
+Parsing ecmascript source code failed 
+[browser] ./src/app/books/[id]/page.tsx:22:28
+Error: Unterminated string constant
+  20 | export default async function BookDetailPage({
+  21 |   params,
+> 22 | }: PageProps<"/books/[id]">") {
+     |                            ^^^^
+  23 |   const session = await getSession();
+  24 |
+  25 |   const { id } = await params;
+
+Parsing ecmascript source code failed 
+[browser] ./src/app/books/[id]/page.tsx:22:28
+Error: Unterminated string constant
+  20 | export default async function BookDetailPage({
+  21 |   params,
+> 22 | }: PageProps<"/books/[id]">") {
+     |                            ^^^^
+  23 |   const session = await getSession();
+  24 |
+  25 |   const { id } = await params;
+
+Parsing ecmascript source code failed 
+[browser] ./src/app/books/[id]/page.tsx:22:28
+Error: Unterminated string constant
+  20 | export default async function BookDetailPage({
+  21 |   params,
+> 22 | }: PageProps<"/books/[id]">") {
+     |                            ^^^^
+  23 |   const session = await getSession();
+  24 |
+  25 |   const { id } = await params;
+
+Parsing ecmascript source code failed 
+[browser] ./src/app/books/[id]/page.tsx:22:28
+Error: Unterminated string constant
+  20 | export default async function BookDetailPage({
+  21 |   params,
+> 22 | }: PageProps<"/books/[id]">") {
+     |                            ^^^^
+  23 |   const session = await getSession();
+  24 |
+  25 |   const { id } = await params;
+
+Parsing ecmascript source code failed 
+ GET /search?q=%EC%8B%AC%EB%A6%AC 500 in 18ms (next.js: 11ms, application-code: 7ms)
+[browser] Uncaught Error: ./src/app/books/[id]/page.tsx:22:28
+Error: Unterminated string constant
+  20 | export default async function BookDetailPage({
+  21 |   params,
+> 22 | }: PageProps<"/books/[id]">") {
+     |                            ^^^^
+  23 |   const session = await getSession();
+  24 |
+  25 |   const { id } = await params;
+
+Parsing ecmascript source code failed
+
+
+    at <unknown> (Error: ./src/app/books/[id]/page.tsx:22:28)
+    at <unknown> (Error: (./src/app/books/[id]/page.tsx:22:28)
+[browser] ./src/app/books/[id]/page.tsx:22:28
+Error: Unterminated string constant
+  20 | export default async function BookDetailPage({
+  21 |   params,
+> 22 | }: PageProps<"/books/[id]">") {
+     |                            ^^^^
+  23 |   const session = await getSession();
+  24 |
+  25 |   const { id } = await params;
+
+Parsing ecmascript source code failed 
+[browser] ./src/app/books/[id]/page.tsx:22:28
+Error: Unterminated string constant
+  20 | export default async function BookDetailPage({
+  21 |   params,
+> 22 | }: PageProps<"/books/[id]">") {
+     |                            ^^^^
+  23 |   const session = await getSession();
+  24 |
+  25 |   const { id } = await params;
+
+Parsing ecmascript source code failed 
+[browser] ./src/app/books/[id]/page.tsx:22:28
+Error: Unterminated string constant
+  20 | export default async function BookDetailPage({
+  21 |   params,
+> 22 | }: PageProps<"/books/[id]">") {
+     |                            ^^^^
+  23 |   const session = await getSession();
+  24 |
+  25 |   const { id } = await params;
+
+Parsing ecmascript source code failed 
+[browser] ./src/app/books/[id]/page.tsx:22:28
+Error: Unterminated string constant
+  20 | export default async function BookDetailPage({
+  21 |   params,
+> 22 | }: PageProps<"/books/[id]">") {
+     |                            ^^^^
+  23 |   const session = await getSession();
+  24 |
+  25 |   const { id } = await params;
+
+Parsing ecmascript source code failed 
+[browser] ./src/app/books/[id]/page.tsx:22:28
+Error: Unterminated string constant
+  20 | export default async function BookDetailPage({
+  21 |   params,
+> 22 | }: PageProps<"/books/[id]">") {
+     |                            ^^^^
+  23 |   const session = await getSession();
+  24 |
+  25 |   const { id } = await params;
+
+Parsing ecmascript source code failed 
+ GET /search?q=%EC%8B%AC%EB%A6%AC 200 in 35ms (next.js: 4ms, application-code: 31ms)
+ GET /api/search?q=%EC%8B%AC%EB%A6%AC&start=0&max=10 200 in 695ms (next.js: 3ms, application-code: 692ms)

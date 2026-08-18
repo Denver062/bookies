@@ -1,7 +1,7 @@
 import { createServerClient } from "@supabase/ssr";
 import { NextResponse, type NextRequest } from "next/server";
 
-const protectedPaths = ["/notes/new", "/favorites", "/folders", "/profile", "/books"];
+const protectedPaths = ["/notes/new", "/favorites", "/folders", "/profile"];
 
 export async function middleware(request: NextRequest) {
   let supabaseResponse = NextResponse.next({ request });
