@@ -5,9 +5,11 @@ import { formatDateShort, stripMarkdown } from "@/lib/utils";
 import type { Note } from "@/lib/types";
 
 export function NoteCard({ note }: { note: Note }) {
-  const excerpt =
-    stripMarkdown(note.content).slice(0, 140) ||
-    (note.clips.length ? `"${note.clips[0].quote.slice(0, 120)}"` : "");
+  const isLocked = !!note.sharePassword;
+  const excerpt = isLocked
+    ? ""
+    : stripMarkdown(note.content).slice(0, 140) ||
+      (note.clips.length ? `"${note.clips[0].quote.slice(0, 120)}"` : "");
 
   return (
     <Link
@@ -42,6 +44,12 @@ export function NoteCard({ note }: { note: Note }) {
       ) : null}
 
       <div className="mt-auto flex items-center gap-1.5 pt-3">
+        {isLocked ? (
+          <Badge className="bg-amber-50 text-amber-700 border border-amber-200">
+            <Lock className="h-3 w-3" />
+            비밀번호
+          </Badge>
+        ) : null}
         {note.clips.length ? (
           <Badge className="bg-accent-soft text-accent-deep">
             <Quote className="h-3 w-3" />
