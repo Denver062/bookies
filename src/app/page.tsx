@@ -32,8 +32,8 @@ async function CuratedSection({
   return (
     <section className="mt-10">
       <div className="mb-4 flex items-center gap-2">
-        <Icon className="h-5 w-5 text-accent" />
         <h2 className="font-serif text-xl font-bold text-ink">{title}</h2>
+        <Icon className="h-5 w-5 text-accent" />
       </div>
       <div className="flex gap-4 overflow-x-auto scroll-smooth pb-2 scrollbar-none" style={{ scrollbarWidth: "none" }}>
         {books.map((b) => (
