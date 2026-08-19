@@ -55,49 +55,51 @@ async function RandomPreview() {
   return <BookPreviewCard book={book} />;
 }
 
-async function PopularAndTopRated() {
-  const [popular, topRated] = await Promise.all([popularBooks(6), topRatedBooks(6)]);
+async function PopularBooks() {
+  const popular = await popularBooks(6);
+  if (!popular.length) return null;
 
   return (
-    <>
-      {popular.length > 0 ? (
-        <section className="mt-10">
-          <div className="mb-4 flex items-center justify-between">
-            <h2 className="flex items-center gap-2 font-serif text-xl font-bold text-ink">
-              <TrendingUp className="h-5 w-5 text-accent" />
-              많은 기록이 있는 책
-            </h2>
-            <Link
-              href="/search"
-              className="inline-flex items-center gap-1 text-sm font-medium text-accent-deep hover:underline"
-            >
-              더 찾아보기
-            </Link>
-          </div>
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-3">
-            {popular.map((b) => (
-              <BookCard key={b.id} book={b} />
-            ))}
-          </div>
-        </section>
-      ) : null}
+    <section className="mt-10">
+      <div className="mb-4 flex items-center justify-between">
+        <h2 className="flex items-center gap-2 font-serif text-xl font-bold text-ink">
+          많은 기록이 있는 책
+          <TrendingUp className="h-5 w-5 text-accent" />
+        </h2>
+        <Link
+          href="/search"
+          className="inline-flex items-center gap-1 text-sm font-medium text-accent-deep hover:underline"
+        >
+          더 찾아보기
+        </Link>
+      </div>
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-3">
+        {popular.map((b) => (
+          <BookCard key={b.id} book={b} />
+        ))}
+      </div>
+    </section>
+  );
+}
 
-      {topRated.length > 0 ? (
-        <section className="mt-10">
-          <div className="mb-4 flex items-center justify-between">
-            <h2 className="flex items-center gap-2 font-serif text-xl font-bold text-ink">
-              <Sparkles className="h-5 w-5 text-sand" />
-              높은 평점의 책
-            </h2>
-          </div>
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-3">
-            {topRated.map((b) => (
-              <BookCard key={b.id} book={b} />
-            ))}
-          </div>
-        </section>
-      ) : null}
-    </>
+async function TopRatedBooks() {
+  const topRated = await topRatedBooks(6);
+  if (!topRated.length) return null;
+
+  return (
+    <section className="mt-10">
+      <div className="mb-4 flex items-center justify-between">
+        <h2 className="flex items-center gap-2 font-serif text-xl font-bold text-ink">
+          높은 평점의 책
+          <Sparkles className="h-5 w-5 text-sand" />
+        </h2>
+      </div>
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-3">
+        {topRated.map((b) => (
+          <BookCard key={b.id} book={b} />
+        ))}
+      </div>
+    </section>
   );
 }
 
@@ -141,6 +143,10 @@ export default async function HomePage() {
       </Suspense>
 
       <Suspense fallback={null}>
+        <PopularBooks />
+      </Suspense>
+
+      <Suspense fallback={null}>
         <CuratedSection
           title="에세이와 인문학"
           icon={BookOpen}
@@ -149,7 +155,7 @@ export default async function HomePage() {
       </Suspense>
 
       <Suspense fallback={null}>
-        <PopularAndTopRated />
+        <TopRatedBooks />
       </Suspense>
 
       {best.length > 0 ? (
