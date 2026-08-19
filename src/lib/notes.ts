@@ -75,6 +75,7 @@ export async function bestNotes(limit = 4): Promise<Note[]> {
     .from("notes")
     .select("*")
     .eq("is_public", true)
+    .is("share_password", null)
     .order("updated_at", { ascending: false })
     .limit(limit);
 
